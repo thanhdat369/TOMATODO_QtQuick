@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>qml/style/qmldir</file>
+        <file>qml/style/ColorStyle.qml</file>
+        <file>qml/components/AddTaskButton.qml</file>
+        <file>qml/components/DatePicker.qml</file>
+        <file>qml/components/IconButton.qml</file>
+        <file>qml/components/PomodoroCircle.qml</file>
+        <file>qml/components/DetailTextBox.qml</file>
+    </qresource>
+</RCC>
