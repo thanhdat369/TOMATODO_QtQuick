@@ -8,5 +8,6 @@
         <file>qml/components/IconButton.qml</file>
         <file>qml/components/PomodoroCircle.qml</file>
         <file>qml/components/DetailTextBox.qml</file>
+        <file>qml/components/TaskCard.qml</file>
     </qresource>
 </RCC>
