@@ -8,7 +8,6 @@ Rectangle {
 	width: 431
 	height: 47
 
-
 	anchors.horizontalCenter: parent.horizontalCenter
 	Layout.fillWidth: true
 
@@ -16,7 +15,6 @@ Rectangle {
 	radius: 16
 
 	color: ColorStyle.mainColor01
-
 	RowLayout {
 
 		Layout.margins: parent
@@ -101,12 +99,9 @@ Rectangle {
 
 				radius: width*0.5
 				color: ColorStyle.mainColor
-
 			}
-
 			Text {
 				id: text2
-
 				Layout.fillWidth: true
 
 				font.bold: true
