@@ -1,5 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Window 2.15
+import QtQuick.Layouts 1.12
 
 import "qml/style"
 import "qml/components"
@@ -11,17 +12,7 @@ Window {
 	title: qsTr("TOMATODO App")
 
 	color: ColorStyle.mainColor
+	TaskCard{
 
-//	AddTaskButton {
-//		id: addButton
-
-//		width: 20
-//		height: 20
-
-//		color: ColorStyle.mainColor01
-
-//	}
-	PomodoroCircle{
-		color: ColorStyle.mainColor01
 	}
 }
