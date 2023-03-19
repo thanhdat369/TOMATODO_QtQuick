@@ -11,12 +11,11 @@ Rectangle {
 	anchors.horizontalCenter: parent.horizontalCenter
 	Layout.fillWidth: true
 
-
 	radius: 16
 
 	color: ColorStyle.mainColor01
-	RowLayout {
 
+	RowLayout {
 		Layout.margins: parent
 		Layout.alignment: Qt.AlignHCenter|Qt.AlignVCenter
 
@@ -31,6 +30,7 @@ Rectangle {
 
 			radius: width*0.5
 		}
+
 		Text {
 			id: task2022
 
@@ -43,6 +43,7 @@ Rectangle {
 
 			text: qsTr("The task 2022")
 		}
+
 		Rectangle {
 			id: cover
 
@@ -52,45 +53,48 @@ Rectangle {
 
 			color: ColorStyle.mainColor
 
-		ColumnLayout {
-			spacing: 6
-			id: deadlineandtime
+			ColumnLayout {
+				id: deadlineandtime
 
-			Layout.alignment: Qt.AlignHCenter
-
-			Text {
-				id: deadlinetext
-
+				spacing: 6
 				Layout.alignment: Qt.AlignHCenter
-				Layout.margins: 3
 
-				font.family: "Inter"
-				font.pixelSize: 7
+				Text {
+					id: deadlinetext
 
-				color: ColorStyle.lightColor
+					Layout.alignment: Qt.AlignHCenter
+					Layout.margins: 3
 
-				text: qsTr("deadline")
-			}
-			Text {
-				id: time
+					font.family: "Inter"
+					font.pixelSize: 7
 
-				Layout.alignment: Qt.AlignHCenter
-				Layout.margins: 6
+					color: ColorStyle.lightColor
 
-				font.family: "Inter"
-				font.bold: true
-				font.pixelSize: 10
+					text: qsTr("deadline")
+				}
 
-				color: ColorStyle.lightColor
+				Text {
+					id: time
 
-				text: qsTr("2pm")
+					Layout.alignment: Qt.AlignHCenter
+					Layout.margins: 6
+
+					font.family: "Inter"
+					font.bold: true
+					font.pixelSize: 10
+
+					color: ColorStyle.lightColor
+
+					text: qsTr("2pm")
+				}
 			}
 		}
-		}
+
 		ColumnLayout {
 			id: lastelement
 
 			spacing: 3
+
 			Rectangle {
 				id: secondcircle
 
@@ -100,6 +104,7 @@ Rectangle {
 				radius: width*0.5
 				color: ColorStyle.mainColor
 			}
+
 			Text {
 				id: text2
 				Layout.fillWidth: true
