@@ -3,11 +3,17 @@
         <file>main.qml</file>
         <file>qml/style/qmldir</file>
         <file>qml/style/ColorStyle.qml</file>
+
         <file>qml/components/AddTaskButton.qml</file>
         <file>qml/components/DatePicker.qml</file>
         <file>qml/components/IconButton.qml</file>
         <file>qml/components/PomodoroCircle.qml</file>
         <file>qml/components/DetailTextBox.qml</file>
         <file>qml/components/TaskCard.qml</file>
+
+        <file>qml/screen/MasterScreen.qml</file>
+        <file>qml/screen/HomeScreen.qml</file>
+        <file>qml/screen/PomodoroScreen.qml</file>
+        <file>qml/screen/DetailScreen.qml</file>
     </qresource>
 </RCC>
