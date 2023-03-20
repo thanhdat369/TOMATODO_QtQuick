@@ -1,56 +1,56 @@
 import QtQuick 2.15
 
-Rectangle{
-    width: 436
-    height: 105
+Rectangle {
+	width: 436
+	height: 105
 
-    anchors.verticalCenter: parent.verticalCenter
-    anchors.horizontalCenter: parent.horizontalCenter
+	anchors.verticalCenter: parent.verticalCenter
+	anchors.horizontalCenter: parent.horizontalCenter
 
-    radius: 20
-    opacity: 0.5
+	radius: 20
+	opacity: 0.5
 
-    color: ColorStyle.mainColor
+	color: ColorStyle.mainColor
 
-    Item{
-        id: textbox
+	Item {
+		id: textbox
 
-        width: 436
-        height: 105
+		width: 436
+		height: 105
 
-        property string wrap: "Text.WordWrap"
-        property real topwidth:300
-        property string label:"This is task about..."
-        property color paint: ColorStyle.lightColor
+		property string wrap: "Text.WordWrap"
+		property real topwidth:300
+		property string label:"This is task about..."
+		property color paint: ColorStyle.lightColor
 
-        Rectangle{
-            id: recoftext
+		Rectangle {
+			id: recoftext
 
-            width: 152
-            height: 52
+			width: 152
+			height: 52
 
-            anchors.top: parent.top
-            anchors.topMargin: 13
-            anchors.left: parent.left
-            anchors.leftMargin: 14
+			anchors.top: parent.top
+			anchors.topMargin: 13
+			anchors.left: parent.left
+			anchors.leftMargin: 14
 
-            color: "transparent"
+			color: "transparent"
 
-            Text {
-                id: template
+			Text {
+				id: template
 
-                width:topwidth
+				width:topwidth
 
-                color: textbox.paint
+				color: textbox.paint
 
-                wrapMode: textbox.wrap
+				wrapMode: textbox.wrap
 
-                font.bold: true
-                font.family: "Inter"
-                font.pixelSize: 10
+				font.bold: true
+				font.family: "Inter"
+				font.pixelSize: 10
 
-                text:textbox.label
-            }
-        }
-    }
+				text:textbox.label
+			}
+		}
+	}
 }

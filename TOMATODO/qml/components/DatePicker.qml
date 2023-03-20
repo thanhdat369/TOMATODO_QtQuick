@@ -13,7 +13,7 @@ Item {
 
 		spacing: 5
 
-		Rectangle{
+		Rectangle {
 			id: backIconBox
 
 			Layout.preferredHeight: root.height
@@ -31,6 +31,7 @@ Item {
 
 		Rectangle {
 			color: "transparent"
+
 			Layout.preferredWidth: 200
 			Layout.preferredHeight: root.height
 			Text {
@@ -54,6 +55,7 @@ Item {
 
 			IconButton {
 				id: iconFowardButton
+
 				color: root.color
 
 				iconSrc: "qrc:assets/icon/arrow-foward.svg"
