@@ -4,5 +4,6 @@
         <file>assets/icon/arrow-back.svg</file>
         <file>assets/icon/arrow-foward.svg</file>
         <file>assets/icon/play-button.svg</file>
+        <file>assets/icon/settings.svg</file>
     </qresource>
 </RCC>

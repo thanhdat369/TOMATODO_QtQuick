@@ -8,8 +8,6 @@ Item {
 	property color color: "white"
 	property string iconSrc: "qrc:assets/icon/plus.svg"
 
-	anchors.centerIn: parent
-
 	width: 20
 	height: 20
 

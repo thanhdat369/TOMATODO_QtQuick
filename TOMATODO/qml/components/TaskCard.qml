@@ -8,15 +8,12 @@ Rectangle {
 	width: 431
 	height: 47
 
-	anchors.horizontalCenter: parent.horizontalCenter
-	Layout.fillWidth: true
-
 	radius: 16
 
 	color: ColorStyle.mainColor01
 
 	RowLayout {
-		Layout.margins: parent
+
 		Layout.alignment: Qt.AlignHCenter|Qt.AlignVCenter
 
 		Rectangle {

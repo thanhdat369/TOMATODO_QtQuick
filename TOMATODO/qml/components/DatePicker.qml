@@ -4,14 +4,14 @@ import QtQuick.Layouts 1.15
 Item {
 	id: root
 
-	height: 50
-
 	property color color: "white"
 
-	RowLayout {
-		anchors.fill: parent
+	height: 20
 
+	RowLayout {
+		anchors.horizontalCenter: root.horizontalCenter
 		spacing: 5
+		width: 100
 
 		Rectangle {
 			id: backIconBox
