@@ -7,19 +7,25 @@ import "qml/components"
 import "qml/screen"
 
 Window {
+	id: window
 	width: 500
 	height: 500
+
+	minimumWidth: 500
+	minimumHeight: 500
+
+	maximumWidth: 800
+	maximumHeight: 500
+
 	visible: true
 	title: qsTr("TOMATODO App")
 
 	color: ColorStyle.backgroundColor
 
-//	HomeScreen {
-//		id: homeScreen
-//		width: 500
-//	}
-	SettingsScreen {
+	PomodoroScreen {
 		id: pomodoroScreen
-		width: 500
+
+		width: window.width
 	}
+
 }
