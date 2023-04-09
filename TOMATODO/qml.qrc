@@ -7,7 +7,7 @@
         <file>qml/components/IconButton.qml</file>
         <file>qml/components/PomodoroCircle.qml</file>
         <file>qml/components/TaskCard.qml</file>
-        <file>qml/screen/MasterScreen.qml</file>
+        <file>qml/screen/SettingsScreen.qml</file>
         <file>qml/screen/HomeScreen.qml</file>
         <file>qml/screen/PomodoroScreen.qml</file>
         <file>qml/screen/layout/TopLayout.qml</file>

@@ -18,7 +18,7 @@ Window {
 //		id: homeScreen
 //		width: 500
 //	}
-	PomodoroScreen {
+	SettingsScreen {
 		id: pomodoroScreen
 		width: 500
 	}
