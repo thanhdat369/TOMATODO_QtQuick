@@ -1,12 +1,10 @@
 import QtQuick 2.15
+import "../style"
 
 Rectangle{
 	id:  circletimeline
 	width: 233
 	height: 233
-
-	anchors.verticalCenter: parent.verticalCenter
-	anchors.horizontalCenter: parent.horizontalCenter
 
 	color: ColorStyle.mainColor
 

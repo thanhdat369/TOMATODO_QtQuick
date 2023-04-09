@@ -12,10 +12,14 @@ Window {
 	visible: true
 	title: qsTr("TOMATODO App")
 
-	color: ColorStyle.mainColor
+	color: ColorStyle.backgroundColor
 
-	HomeScreen {
-		id: homeScreen
+//	HomeScreen {
+//		id: homeScreen
+//		width: 500
+//	}
+	PomodoroScreen {
+		id: pomodoroScreen
 		width: 500
 	}
 }
