@@ -22,8 +22,8 @@ Window {
 
 	color: ColorStyle.backgroundColor
 
-	PomodoroScreen {
-		id: pomodoroScreen
+	HomeScreen {
+		id: homeScreen
 
 		width: window.width
 	}

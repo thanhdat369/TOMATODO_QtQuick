@@ -12,5 +12,8 @@
         <file>qml/screen/PomodoroScreen.qml</file>
         <file>qml/screen/layout/TopLayout.qml</file>
         <file>qml/components/TitleApp.qml</file>
+        <file>qml/components/RoundTick.qml</file>
+        <file>qml/components/DeadlineBox.qml</file>
+        <file>qml/components/PomodoroInfoTaskCard.qml</file>
     </qresource>
 </RCC>

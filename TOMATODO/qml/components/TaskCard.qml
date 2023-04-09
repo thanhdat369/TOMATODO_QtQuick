@@ -3,36 +3,34 @@ import QtQuick.Layouts 1.12
 import "../style"
 
 Rectangle {
-	id: titlerec
+	id: root
 
 	width: 431
-	height: 47
+	height: 50
 
 	radius: 16
 
 	color: ColorStyle.mainColor01
 
 	RowLayout {
+		spacing: 10
+		anchors.verticalCenter: parent.verticalCenter
+		RoundTick {
+			id: roundTick
 
-		Layout.alignment: Qt.AlignHCenter|Qt.AlignVCenter
+			Layout.alignment: Qt.AlignCenter
+			Layout.leftMargin: 20
 
-		Rectangle {
-			id: firstcircle
-
-			Layout.fillWidth: true
-			Layout.leftMargin: 14
-
-			width: 23
-			height: 23
-
-			radius: width*0.5
+			onClicked: {
+				root.state = root.state == "check" ? "uncheck" : "check";
+			}
 		}
 
-		Text {
-			id: task2022
+		TextEdit {
+			id: taskName
 
+			selectByMouse: true
 			Layout.fillWidth: true
-			Layout.leftMargin: 17
 
 			font.bold: true
 			font.family: "Inter"
@@ -40,80 +38,50 @@ Rectangle {
 
 			text: qsTr("The task 2022")
 		}
+	}
 
-		Rectangle {
-			id: cover
+	RowLayout {
+		anchors.right: root.right
 
-			width: 38
-			height: 47
-			Layout.leftMargin: 204
+		DeadlineBox {
+			id: deadlineBox
 
-			color: ColorStyle.mainColor
-
-			ColumnLayout {
-				id: deadlineandtime
-
-				spacing: 6
-				Layout.alignment: Qt.AlignHCenter
-
-				Text {
-					id: deadlinetext
-
-					Layout.alignment: Qt.AlignHCenter
-					Layout.margins: 3
-
-					font.family: "Inter"
-					font.pixelSize: 7
-
-					color: ColorStyle.lightColor
-
-					text: qsTr("deadline")
-				}
-
-				Text {
-					id: time
-
-					Layout.alignment: Qt.AlignHCenter
-					Layout.margins: 6
-
-					font.family: "Inter"
-					font.bold: true
-					font.pixelSize: 10
-
-					color: ColorStyle.lightColor
-
-					text: qsTr("2pm")
-				}
-			}
+			Layout.preferredHeight: root.height
+			Layout.preferredWidth: 50
 		}
 
-		ColumnLayout {
-			id: lastelement
+		PomodoroInfoTaskCard {
+			id: pomodoroInfo
 
-			spacing: 3
-
-			Rectangle {
-				id: secondcircle
-
-				width: 22
-				height: 22
-
-				radius: width*0.5
-				color: ColorStyle.mainColor
-			}
-
-			Text {
-				id: text2
-				Layout.fillWidth: true
-
-				font.bold: true
-				font.family: "Inter"
-				font.pixelSize: 7
-
-				color: ColorStyle.textDarkColor
-
-				text: qsTr("30min")
-			}
+			Layout.preferredHeight: root.height
+			Layout.preferredWidth: 40
 		}
 	}
+	states: [
+		State {
+			name: "check"
+			PropertyChanges {
+				target: roundTick
+				isDone: true
+			}
+			PropertyChanges {
+				target: taskName
+				font.strikeout: true
+				readOnly:true
+			}
+		},
+		State {
+			name: "uncheck"
+			PropertyChanges {
+				target: roundTick
+				isDone: false
+			}
+			PropertyChanges {
+				target: taskName
+				font.strikeout: false
+			}
+
+		}
+
+	]
 }
