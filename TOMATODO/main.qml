@@ -4,6 +4,7 @@ import QtQuick.Layouts 1.12
 
 import "qml/style"
 import "qml/components"
+import "qml/screen"
 
 Window {
 	width: 500
@@ -12,7 +13,9 @@ Window {
 	title: qsTr("TOMATODO App")
 
 	color: ColorStyle.mainColor
-	TaskCard{
 
+	HomeScreen {
+		id: homeScreen
+		width: 500
 	}
 }
