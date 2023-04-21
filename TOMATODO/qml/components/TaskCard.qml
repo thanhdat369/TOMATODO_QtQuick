@@ -5,6 +5,9 @@ import "../style"
 Rectangle {
 	id: root
 
+	property string taskID: "0"
+	property string taskName: "0"
+
 	width: 431
 	height: 50
 
@@ -27,7 +30,7 @@ Rectangle {
 		}
 
 		TextEdit {
-			id: taskName
+			id: taskNameEdit
 
 			selectByMouse: true
 			Layout.fillWidth: true
@@ -36,7 +39,7 @@ Rectangle {
 			font.family: "Inter"
 			font.pixelSize: 12
 
-			text: qsTr("The task 2022")
+			text: root.taskName
 		}
 	}
 
@@ -65,7 +68,7 @@ Rectangle {
 				isDone: true
 			}
 			PropertyChanges {
-				target: taskName
+				target: taskNameEdit
 				font.strikeout: true
 				readOnly:true
 			}
@@ -77,7 +80,7 @@ Rectangle {
 				isDone: false
 			}
 			PropertyChanges {
-				target: taskName
+				target: taskNameEdit
 				font.strikeout: false
 			}
 

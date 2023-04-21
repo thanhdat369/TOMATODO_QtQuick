@@ -15,5 +15,6 @@
         <file>qml/components/RoundTick.qml</file>
         <file>qml/components/DeadlineBox.qml</file>
         <file>qml/components/PomodoroInfoTaskCard.qml</file>
+        <file>qml/screen/TestComponent.qml</file>
     </qresource>
 </RCC>

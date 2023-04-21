@@ -12,9 +12,15 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Quick)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick Sql)
 
 set(PROJECT_SOURCES
+        taskcarditemlist.h
+        taskcarditemlist.cpp
+
+        tomatodotaskitem.h
+        tomatodotaskitem.cpp
+
         main.cpp
         qml.qrc
         assets.qrc
@@ -44,7 +50,7 @@ else()
 endif()
 
 target_link_libraries(TOMATODO
-  PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick)
+  PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick Qt5::Sql)
 
 set_target_properties(TOMATODO PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com

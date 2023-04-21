@@ -1,5 +1,7 @@
+#include "taskcarditemlist.h"
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QQmlContext>
 
 
 int main(int argc, char *argv[])
@@ -9,8 +11,21 @@ int main(int argc, char *argv[])
 #endif
     QGuiApplication app(argc, argv);
 
+
     QQmlApplicationEngine engine;
-    const QUrl url(QStringLiteral("qrc:/main.qml"));
+	QSqlDatabase db;
+	db = QSqlDatabase::addDatabase("QSQLITE");
+	db.setDatabaseName("E:/test_sqlite/newDatabase.db");
+
+	bool connectStatus = db.open();
+
+	qDebug()<< "Connection to db" << connectStatus;
+
+	TaskCardItemList *taskCardItemList = new TaskCardItemList();
+
+	engine.rootContext()->setContextProperty("myModel", taskCardItemList);
+
+	const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {
         if (!obj && url == objUrl)

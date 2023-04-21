@@ -22,10 +22,14 @@ Window {
 
 	color: ColorStyle.backgroundColor
 
+//	TestComponent {
+//		id: testComponent
+//		anchors.fill: parent
+//	}
 	HomeScreen {
-		id: homeScreen
-
-		width: window.width
+		anchors.fill: parent
+		tomatodoModel: myModel
 	}
+
 
 }
