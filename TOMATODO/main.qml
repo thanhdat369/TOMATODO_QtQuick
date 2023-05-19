@@ -7,6 +7,7 @@ import "qml/components"
 import "qml/screen"
 
 Window {
+	// that le
 	id: window
 	width: 500
 	height: 500
