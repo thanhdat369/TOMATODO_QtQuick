@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
 	QSqlDatabase db;
 	db = QSqlDatabase::addDatabase("QSQLITE");
-	db.setDatabaseName("E:/test_sqlite/newDatabase.db");
+	db.setDatabaseName("E:/MyTESTFILE/PET_PROJECT/PET_github/TOMATODO/TOMATODO_QtQuick/TOMATODO/db/tomatodoDB.db");
 
 	bool connectStatus = db.open();
 
