@@ -6,5 +6,6 @@
         <file>assets/icon/play-button.svg</file>
         <file>assets/icon/settings.svg</file>
         <file>assets/icon/pause.svg</file>
+        <file>assets/icon/tick.svg</file>
     </qresource>
 </RCC>

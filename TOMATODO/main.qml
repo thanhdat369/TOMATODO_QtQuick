@@ -22,10 +22,18 @@ Window {
 
 	color: ColorStyle.backgroundColor
 
-	PomodoroScreen {
-		id: pomodoroScreen
+//	TestComponent {
+//		id: testComponent
+//		anchors.fill: parent
+//	}
+//	HomeScreen {
+//		anchors.fill: parent
+//		tomatodoModel: myModel
+//	}
 
-		width: window.width
+	PomodoroPicker {
+		anchors.centerIn: parent
+
 	}
 
 }

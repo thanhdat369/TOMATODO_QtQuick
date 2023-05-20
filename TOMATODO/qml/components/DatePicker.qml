@@ -7,11 +7,11 @@ Item {
 	property color color: "white"
 
 	height: 20
+	width: 260
 
 	RowLayout {
 		anchors.horizontalCenter: root.horizontalCenter
 		spacing: 5
-		width: 100
 
 		Rectangle {
 			id: backIconBox
@@ -32,7 +32,7 @@ Item {
 		Rectangle {
 			color: "transparent"
 
-			Layout.preferredWidth: 200
+			Layout.preferredWidth: 100
 			Layout.preferredHeight: root.height
 			Text {
 				id: dateTimeText

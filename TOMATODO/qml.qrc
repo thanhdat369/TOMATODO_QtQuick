@@ -12,5 +12,12 @@
         <file>qml/screen/PomodoroScreen.qml</file>
         <file>qml/screen/layout/TopLayout.qml</file>
         <file>qml/components/TitleApp.qml</file>
+        <file>qml/components/RoundTick.qml</file>
+        <file>qml/components/DeadlineBox.qml</file>
+        <file>qml/components/PomodoroInfoTaskCard.qml</file>
+        <file>qml/screen/TestComponent.qml</file>
+        <file>qml/components/PomodoroPicker.qml</file>
+        <file>qml/components/NumberRoundedBox.qml</file>
+        <file>qml/components/RoundedButton.qml</file>
     </qresource>
 </RCC>
