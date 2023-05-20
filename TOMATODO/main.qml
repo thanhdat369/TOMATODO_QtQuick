@@ -26,10 +26,14 @@ Window {
 //		id: testComponent
 //		anchors.fill: parent
 //	}
-	HomeScreen {
-		anchors.fill: parent
-		tomatodoModel: myModel
-	}
+//	HomeScreen {
+//		anchors.fill: parent
+//		tomatodoModel: myModel
+//	}
 
+	PomodoroPicker {
+		anchors.centerIn: parent
+
+	}
 
 }

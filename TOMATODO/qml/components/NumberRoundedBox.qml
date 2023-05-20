@@ -14,6 +14,10 @@ Rectangle {
 
 		anchors.centerIn: parent
 
+		font.family: "Inter"
+		font.bold: true
+		font.pixelSize: 18
+		font.styleName: "normal"
 		color: ColorStyle.textDarkColor
 
 		text: "0"
