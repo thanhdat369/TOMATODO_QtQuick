@@ -4,21 +4,22 @@ Rectangle {
 	id: root
 
 	property alias numberText: numberLabel.text
-	color: ColorStyle.mainColor01
-	implicitWidth: 50
-	implicitHeight: 50
-	radius: 5
+	color: "transparent"
+	border.width: 2
+	border.color: ColorStyle.mainColor
+	implicitWidth: 60
+	implicitHeight: 80
+	radius: 10
 
 	TextEdit {
 		id: numberLabel
 
 		anchors.centerIn: parent
 
-		font.family: "Inter"
-		font.bold: true
-		font.pixelSize: 18
+		font.family: FontStyle.ubuntuMonoBold.name
+		font.pixelSize: 30
 		font.styleName: "normal"
-		color: ColorStyle.textDarkColor
+		color: ColorStyle.mainColor
 
 		text: "0"
 	}

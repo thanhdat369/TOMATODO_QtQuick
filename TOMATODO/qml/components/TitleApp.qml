@@ -1,13 +1,12 @@
 import QtQuick 2.15
-
-Rectangle{
+import "../style"
+Rectangle {
 	id: root
-	width:344
-	height: 36
+	width: 344
+	height: headTitle.height
 	color: "transparent"
-	property color textColor: "white"
+	property color textColor: ColorStyle.mainColor
 	property string text: "TOMATODO"
-
 
 	Text {
 		id: headTitle
@@ -15,11 +14,8 @@ Rectangle{
 
 		color: root.textColor
 
-		font.family: "Inter"
-		font.bold: true
-		font.pixelSize: 30
-		font.styleName: "normal"
-		lineHeight: 30
+		font.family: FontStyle.ubuntuMonoBold.name
+		font.pixelSize: 45
 
 		text: qsTr(root.text)
 	}

@@ -36,11 +36,10 @@ Item{
 
 				Layout.alignment: Qt.AlignCenter
 
-				font.family: "Inter"
 				font.bold: true
-				font.pixelSize: 16
-				font.styleName: "normal"
-				color: ColorStyle.textLightColor
+				font.pixelSize: 30
+				color: ColorStyle.mainColor
+				font.family: FontStyle.ubuntuMonoBold.name
 
 				text: root.taskName
 			}

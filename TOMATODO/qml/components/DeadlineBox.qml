@@ -1,41 +1,59 @@
 import QtQuick 2.15
 import QtQuick.Layouts 1.15
 import "../style"
-
-Rectangle {
+Item {
 	id: root
-	color: ColorStyle.mainColor
-	implicitWidth: 50
 
-	property string deadlineTime: "2pm"
-	ColumnLayout {
-		anchors.centerIn: parent
-		spacing: 6
+	implicitWidth: 300
+	property string deadlineTime: "30 min"
+	property color backgroundColor: ColorStyle.mainColor
+	property color textColor: ColorStyle.lightColor
+	Rectangle {
+		id: overlayRec
+		width: mainRectangle.radius
+		height: mainRectangle.height
+		color: mainRectangle.color
+		anchors.top: mainRectangle.top
+	}
 
-		Text {
-			id: deadlineText
+	Rectangle {
+		id: mainRectangle
+		color: root.backgroundColor
 
-			font.family: "Inter"
-			font.pixelSize: 10
+		width: root.width
+		height: root.height
 
-			font.bold: true
-			color: ColorStyle.lightColor
+		radius: 20
 
-			text: qsTr("Deadline")
-		}
+		ColumnLayout {
+			anchors.centerIn: parent
+			spacing: 6
 
-		Text {
-			id: time
+			Text {
+				id: deadlineText
 
-			Layout.margins: 6
+				Layout.fillWidth: true
 
-			font.family: "Inter"
-			font.bold: true
-			font.pixelSize: 10
+				font.family: FontStyle.ubuntuMonoRegular.name
+				font.pixelSize: 16
 
-			color: ColorStyle.lightColor
+				font.bold: true
+				color: root.textColor
 
-			text: root.deadlineTime
+				text: qsTr("2pm")
+			}
+
+			Text {
+				id: time
+
+				font.family: FontStyle.ubuntuMonoRegular.name
+				font.bold: true
+				font.pixelSize: 12
+
+				color: root.textColor
+
+				text: root.deadlineTime
+			}
 		}
 	}
 }

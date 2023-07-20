@@ -8,21 +8,27 @@ Rectangle {
 	property string taskID: "0"
 	property string taskName: "0"
 
-	width: 431
-	height: 50
+	implicitWidth: 431
+	implicitHeight: 50
 
-	radius: 16
+	border.width: 1
+	border.color: internal.cardColor
 
-	color: ColorStyle.mainColor01
+	radius: 20
+
+	color: "transparent"
 
 	RowLayout {
 		spacing: 10
 		anchors.verticalCenter: parent.verticalCenter
+
 		RoundTick {
 			id: roundTick
 
 			Layout.alignment: Qt.AlignCenter
 			Layout.leftMargin: 20
+
+			color: internal.cardColor
 
 			onClicked: {
 				root.state = root.state == "check" ? "uncheck" : "check";
@@ -36,8 +42,10 @@ Rectangle {
 			Layout.fillWidth: true
 
 			font.bold: true
-			font.family: "Inter"
-			font.pixelSize: 12
+			font.family: FontStyle.ubuntuMonoRegular.name
+			font.pixelSize: 14
+
+			color: internal.cardColor
 
 			text: root.taskName
 		}
@@ -51,14 +59,16 @@ Rectangle {
 
 			Layout.preferredHeight: root.height
 			Layout.preferredWidth: 50
+
+			backgroundColor: internal.cardColor
 		}
 
-		PomodoroInfoTaskCard {
-			id: pomodoroInfo
+//		PomodoroInfoTaskCard {
+//			id: pomodoroInfo
 
-			Layout.preferredHeight: root.height
-			Layout.preferredWidth: 40
-		}
+//			Layout.preferredHeight: root.height
+//			Layout.preferredWidth: 40
+//		}
 	}
 	states: [
 		State {
@@ -85,6 +95,27 @@ Rectangle {
 			}
 
 		}
-
 	]
+
+	MouseArea {
+		id: mouseArea
+
+		anchors.fill: parent
+		hoverEnabled: true
+		propagateComposedEvents: true
+	}
+
+	QtObject {
+		id: internal
+
+		property color cardColor: {
+			if(mouseArea.containsMouse){
+				return ColorStyle.mainHoverColor;
+			}
+
+			return root.state == "check" ?  ColorStyle.secondaryColor:ColorStyle.mainColor
+
+
+		}
+	}
 }

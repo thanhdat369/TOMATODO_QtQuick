@@ -34,12 +34,14 @@ Item {
 
 			Layout.preferredWidth: 100
 			Layout.preferredHeight: root.height
+
 			Text {
 				id: dateTimeText
 
 				anchors.centerIn: parent
 				color: root.color
 
+				font.family: FontStyle.ubuntuMonoRegular.name
 				text: qsTr("10 January 2023")
 
 			}
