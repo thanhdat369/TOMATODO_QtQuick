@@ -3,6 +3,7 @@ import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15
 import "layout"
 import "../components"
+import "../style"
 Item{
 	id: root
 
@@ -12,7 +13,7 @@ Item{
 		id: colummBig
 		width: root.width
 
-		spacing: 10
+		spacing: 15
 
 		TopLayout {
 			id: topLayout
@@ -25,6 +26,7 @@ Item{
 		DatePicker {
 			id: datePicker
 			Layout.alignment: Qt.AlignCenter
+			color: ColorStyle.mainColor
 		}
 
 	}

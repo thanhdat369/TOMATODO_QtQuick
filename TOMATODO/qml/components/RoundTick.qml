@@ -6,24 +6,24 @@ Rectangle {
 	implicitWidth: 25
 	implicitHeight: 25
 
-	radius: width*0.5
+	radius: width * 0.5
 
 	property bool isDone: false
 
 	signal clicked()
 
-	Image {
-		id: iconTicked
+//	Image {
+//		id: iconTicked
 
-		visible: isDone
+//		visible: isDone
 
-		width: root.width
-		height: root.height
+//		width: root.width
+//		height: root.height
 
-		anchors.centerIn: parent.Center
+//		anchors.centerIn: parent.Center
 
-		source: "qrc:assets/icon/tick.svg"
-	}
+//		source: "qrc:assets/icon/tick.svg"
+//	}
 
 	MouseArea {
 		id: mouseArea

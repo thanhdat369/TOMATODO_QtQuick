@@ -17,23 +17,27 @@ Window {
 	maximumWidth: 800
 	maximumHeight: 500
 
+
 	visible: true
 	title: qsTr("TOMATODO App")
 
 	color: ColorStyle.backgroundColor
 
-//	TestComponent {
-//		id: testComponent
-//		anchors.fill: parent
-//	}
+	//	TestComponent {
+	//		id: testComponent
+	//		anchors.fill: parent
+	//	}
 //	HomeScreen {
 //		anchors.fill: parent
 //		tomatodoModel: myModel
 //	}
+//	PomodoroScreen {
+//		anchors.fill: parent
+//	}
 
-	PomodoroPicker {
-		anchors.centerIn: parent
+	    PomodoroPicker {
+			anchors.centerIn: parent
 
-	}
+		}
 
 }

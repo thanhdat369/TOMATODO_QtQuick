@@ -9,15 +9,15 @@ Rectangle{
 	implicitWidth: 250
 	implicitHeight: 250
 
-	color: ColorStyle.mainColor
+	color: "transparent"
+	border.color: ColorStyle.mainColor
+	border.width: 3
 
 	radius: width * 0.5
 
 	property int secondRemain: 20
 
 	ColumnLayout{
-		spacing: 10
-
 		anchors.centerIn: circleBox
 
 		Rectangle {
@@ -35,7 +35,7 @@ Rectangle{
 				font.pixelSize: 35
 				font.bold: true
 
-				color: ColorStyle.lightColor
+				color: ColorStyle.mainColor
 
 				text: internal.showString(circleBox.secondRemain)
 			}
@@ -48,7 +48,7 @@ Rectangle{
 
 			iconSrc: internal.iconScr
 
-			color: ColorStyle.lightColor
+			color: ColorStyle.mainColor
 
 			onClicked: {
 				if(circleBox.secondRemain > 0) {

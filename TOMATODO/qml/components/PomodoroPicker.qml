@@ -4,7 +4,9 @@ import "../style"
 
 Rectangle {
 	id: root
-	color: ColorStyle.mainColor
+	color: ColorStyle.backgroundColor
+	border.color: ColorStyle.mainColor
+	border.width: 3
 	implicitWidth: 400
 	implicitHeight: 250
 	radius: 20
@@ -24,12 +26,11 @@ Rectangle {
 		anchors.topMargin: 20
 		anchors.leftMargin: 20
 
-		font.family: "Inter"
-		font.bold: true
+		font.family: FontStyle.ubuntuMonoBold.name
 		font.pixelSize: 30
 		font.styleName: "normal"
 
-		color: "white"
+		color: ColorStyle.mainColor
 
 		text: internal.title
 	}
@@ -59,7 +60,8 @@ Rectangle {
 				Text {
 					anchors.centerIn: parent
 					text: ":"
-					color: "white"
+					color: ColorStyle.mainColor
+					font.pixelSize: 30
 				}
 			}
 
@@ -76,11 +78,9 @@ Rectangle {
 			id: taskLabel
 			Layout.alignment: Qt.AlignCenter
 
-			font.family: "Inter"
-			font.bold: true
-			font.pixelSize: 16
-			font.styleName: "normal"
-			color: "white"
+			font.family: FontStyle.ubuntuMonoBold.name
+			font.pixelSize: 24
+			color: ColorStyle.mainColor
 
 			text: root.taskName
 		}

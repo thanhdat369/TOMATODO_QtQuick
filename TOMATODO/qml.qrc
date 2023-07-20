@@ -19,5 +19,6 @@
         <file>qml/components/PomodoroPicker.qml</file>
         <file>qml/components/NumberRoundedBox.qml</file>
         <file>qml/components/RoundedButton.qml</file>
+        <file>qml/style/FontStyle.qml</file>
     </qresource>
 </RCC>

@@ -5,8 +5,8 @@ import "../style"
 Item {
 	id: root
 
-	property color color: ColorStyle.lightColor
-	property color hoverColor: ColorStyle.mainColor01
+	property color color: ColorStyle.mainColor
+	property color hoverColor: ColorStyle.lightColor
 	property string iconSrc: "qrc:assets/icon/plus.svg"
 
 	width: 20

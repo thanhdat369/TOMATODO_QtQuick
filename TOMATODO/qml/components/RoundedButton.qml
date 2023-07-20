@@ -19,14 +19,21 @@ Item {
 
 		implicitWidth: 100
 		implicitHeight: 30
-		radius: 10
+		radius: 20
 
-		color: internal.buttonColor
+		border.width: 2
+		border.color: internal.borderButtonColor
+
+		color: "transparent"
 
 		Text {
 			id: buttonText
 
+			font.family: FontStyle.ubuntuMonoBold.name
+			font.pixelSize: 20
 			anchors.centerIn: parent
+			color: ColorStyle.lightColor
+
 			text: root.text
 		}
 	}
@@ -38,6 +45,15 @@ Item {
 				return ColorStyle.lightColor;
 			} else if(root.style === RoundedButton.ButtonStyle.CancelButton) {
 				return ColorStyle.darkColor;
+			}
+			return ColorStyle.mainColor01
+		}
+
+		property color borderButtonColor: {
+			if (root.style === RoundedButton.ButtonStyle.AcceptButton) {
+				return ColorStyle.mainColor;
+			} else if(root.style === RoundedButton.ButtonStyle.CancelButton) {
+				return ColorStyle.lightColor;
 			}
 			return ColorStyle.mainColor01
 		}
