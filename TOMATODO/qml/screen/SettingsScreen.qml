@@ -12,7 +12,7 @@ Item{
 	ColumnLayout {
 		width: root.width
 
-		spacing: 10
+		spacing: 20
 
 		TopLayout {
 			id: topLayout
@@ -21,6 +21,8 @@ Item{
 			hasSettingButton: false
 		}
 
+
+
 		ColumnLayout {
 			spacing: 10
 
@@ -28,27 +30,30 @@ Item{
 
 			Layout.alignment: Qt.AlignCenter
 
+
 			RowLayout {
+				id: languageLayout
+				Layout.fillWidth: true
+				Layout.alignment: Qt.AlignLeft
+				spacing: 20
+
 				Label {
-					id: label
+					id: languageLabel
 
-					Layout.alignment: Qt.AlignLeft
+					font.family: FontStyle.ubuntuMonoBold.name
+					font.pixelSize: 16
+					color: ColorStyle.mainColor
 
-					font.family: "Inter"
-					font.bold: true
-					font.styleName: "normal"
 					text: qsTr("Languague")
 				}
 
-				ComboBox {
-					id: languageCombobox
-
-					editable: true
-					Layout.alignment: Qt.AlignRight
-
-					model: ["English", "Tiếng Việt"]
-
+				DropdownBox {
+					id: languageDropdown
+					model: ["English","Vietnamese"]
+					height: 100
+					width: 250
 				}
+
 			}
 		}
 	}
