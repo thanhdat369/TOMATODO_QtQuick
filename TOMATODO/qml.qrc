@@ -20,5 +20,6 @@
         <file>qml/components/NumberRoundedBox.qml</file>
         <file>qml/components/RoundedButton.qml</file>
         <file>qml/style/FontStyle.qml</file>
+        <file>qml/components/DropdownBox.qml</file>
     </qresource>
 </RCC>

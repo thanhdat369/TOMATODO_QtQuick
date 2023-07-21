@@ -27,17 +27,22 @@ Window {
 	//		id: testComponent
 	//		anchors.fill: parent
 	//	}
-//	HomeScreen {
-//		anchors.fill: parent
-//		tomatodoModel: myModel
-//	}
-//	PomodoroScreen {
-//		anchors.fill: parent
-//	}
+	HomeScreen {
+		anchors.fill: parent
+		tomatodoModel: myModel
+		visible: false
+	}
+	PomodoroScreen {
+		anchors.fill: parent
+		visible: false
+	}
 
-	    PomodoroPicker {
-			anchors.centerIn: parent
-
-		}
-
+	PomodoroPicker {
+		anchors.centerIn: parent
+		visible: false
+	}
+	SettingsScreen{
+		anchors.fill: parent
+		visible: true
+	}
 }

@@ -12,5 +12,6 @@
         <file>assets/fonts/Ubuntu_Mono/UbuntuMono-Italic.ttf</file>
         <file>assets/fonts/Ubuntu_Mono/UbuntuMono-Regular.ttf</file>
         <file>assets/fonts/Ubuntu_Mono/UFL.txt</file>
+        <file>assets/icon/down.svg</file>
     </qresource>
 </RCC>
