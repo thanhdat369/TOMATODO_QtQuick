@@ -63,14 +63,14 @@ Rectangle {
 			Layout.preferredWidth: 50
 
 			backgroundColor: internal.cardColor
-		}
 
-		MouseArea {
-			anchors.fill: parent
-			hoverEnabled: true
+			MouseArea {
+				anchors.fill: parent
+				hoverEnabled: true
 
-			onClicked: {
-				root.itemClick();
+				onClicked: {
+					root.itemClick();
+				}
 			}
 		}
 	}
