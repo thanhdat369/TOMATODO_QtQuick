@@ -4,10 +4,12 @@ import QtQuick.Controls 2.15
 import "layout"
 import "../components"
 import "../style"
-Item{
+Item {
 	id: root
 
 	property alias tomatodoModel: listItem.model
+
+	signal onItemClick
 
 	ColumnLayout {
 		id: colummBig
@@ -21,6 +23,10 @@ Item{
 			Layout.fillWidth: true
 
 			hasBackButton: false
+
+			onSettingClick: {
+				settingLoader.active = true;
+			}
 		}
 
 		DatePicker {
@@ -60,6 +66,56 @@ Item{
 		delegate: TaskCard {
 			taskID: model.id
 			taskName: model.name
+
+			onItemClick: {
+				poromodoLoader.active = true;
+			}
+		}
+	}
+
+	Loader {
+		id: poromodoLoader
+		anchors.fill: parent
+		active: false
+		sourceComponent: poromodoScreenComponent
+
+		Component {
+			id: poromodoScreenComponent
+
+			PomodoroScreen {
+				id: settingScreen
+
+				anchors.fill: parent
+
+				onBackClick: {
+					poromodoLoader.active = false;
+				}
+
+				onSettingClick:  {
+					settingLoader.active = true;
+				}
+			}
+		}
+	}
+
+	Loader {
+		id: settingLoader
+		anchors.fill: parent
+		active: false
+		sourceComponent: settingScreenComponent
+
+		Component {
+			id: settingScreenComponent
+
+			SettingsScreen {
+				id: settingScreen
+
+				anchors.fill: parent
+
+				onBackClick: {
+					settingLoader.active = false
+				}
+			}
 		}
 	}
 }

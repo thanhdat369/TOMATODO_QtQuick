@@ -6,8 +6,12 @@ import "layout"
 import "../components"
 import "../style"
 
-Item{
+Rectangle {
 	id: root
+
+	color: ColorStyle.backgroundColor
+
+	signal backClick
 
 	ColumnLayout {
 		width: root.width
@@ -19,9 +23,11 @@ Item{
 
 			Layout.fillWidth: true
 			hasSettingButton: false
+
+			onBackClick: {
+				root.backClick();
+			}
 		}
-
-
 
 		ColumnLayout {
 			spacing: 10

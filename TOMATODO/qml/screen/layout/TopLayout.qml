@@ -10,6 +10,9 @@ ColumnLayout {
 	property bool hasBackButton: true
 	property bool hasAppTitle: true
 
+	signal backClick()
+	signal settingClick()
+
 	spacing: internal.topMargin
 
 	Item {
@@ -30,6 +33,11 @@ ColumnLayout {
 			implicitHeight: internal.iconHeight
 
 			iconSrc: "qrc:assets/icon/arrow-back.svg"
+
+			onClicked: {
+				console.log("Back click top layout");
+				root.backClick();
+			}
 		}
 
 		IconButton {
@@ -42,6 +50,10 @@ ColumnLayout {
 			implicitHeight: internal.iconHeight
 
 			iconSrc: "qrc:assets/icon/settings.svg"
+
+			onClicked: {
+				root.settingClick();
+			}
 		}
 	}
 

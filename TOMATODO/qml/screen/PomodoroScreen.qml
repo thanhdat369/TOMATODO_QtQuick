@@ -4,10 +4,15 @@ import "layout"
 import "../components"
 import "../style"
 
-Item{
+Rectangle {
 	id: root
 
 	property string taskName: "Task Tomatodo"
+
+	color: ColorStyle.backgroundColor
+
+	signal backClick();
+	signal settingClick();
 
 	ColumnLayout {
 		width: root.width
@@ -18,6 +23,14 @@ Item{
 			id: topLayout
 
 			Layout.fillWidth: true
+
+			onBackClick: {
+				root.backClick();
+			}
+
+			onSettingClick: {
+				root.settingClick();
+			}
 		}
 
 		ColumnLayout {
