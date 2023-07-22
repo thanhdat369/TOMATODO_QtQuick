@@ -35,7 +35,6 @@ ColumnLayout {
 			iconSrc: "qrc:assets/icon/arrow-back.svg"
 
 			onClicked: {
-				console.log("Back click top layout");
 				root.backClick();
 			}
 		}
