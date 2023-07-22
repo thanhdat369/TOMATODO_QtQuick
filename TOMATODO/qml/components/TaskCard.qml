@@ -8,6 +8,8 @@ Rectangle {
 	property string taskID: "0"
 	property string taskName: "0"
 
+	signal itemClick()
+
 	implicitWidth: 431
 	implicitHeight: 50
 
@@ -63,12 +65,14 @@ Rectangle {
 			backgroundColor: internal.cardColor
 		}
 
-//		PomodoroInfoTaskCard {
-//			id: pomodoroInfo
+		MouseArea {
+			anchors.fill: parent
+			hoverEnabled: true
 
-//			Layout.preferredHeight: root.height
-//			Layout.preferredWidth: 40
-//		}
+			onClicked: {
+				root.itemClick();
+			}
+		}
 	}
 	states: [
 		State {
