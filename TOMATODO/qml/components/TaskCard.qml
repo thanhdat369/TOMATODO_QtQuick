@@ -53,26 +53,25 @@ Rectangle {
 		}
 	}
 
-	RowLayout {
+	DeadlineBox {
+
+		id: deadlineBox
+
 		anchors.right: root.right
+		implicitHeight: root.height
+		implicitWidth: 50
 
-		DeadlineBox {
-			id: deadlineBox
+		backgroundColor: internal.cardColor
 
-			Layout.preferredHeight: root.height
-			Layout.preferredWidth: 50
+		MouseArea {
+			anchors.fill: parent
+			hoverEnabled: true
 
-			backgroundColor: internal.cardColor
-
-			MouseArea {
-				anchors.fill: parent
-				hoverEnabled: true
-
-				onClicked: {
-					root.itemClick();
-				}
+			onClicked: {
+				root.itemClick();
 			}
 		}
+
 	}
 	states: [
 		State {
@@ -107,6 +106,21 @@ Rectangle {
 		anchors.fill: parent
 		hoverEnabled: true
 		propagateComposedEvents: true
+	}
+
+	IconButton {
+		id: deleteButton
+
+		anchors.right: deadlineBox.right
+		y: -10
+
+		visible: mouseArea.containsMouse || deleteButton.hovered
+
+		iconSrc: "qrc:/assets/icon/close.svg"
+
+		onClicked: {
+			console.log("remove");
+		}
 	}
 
 	QtObject {
