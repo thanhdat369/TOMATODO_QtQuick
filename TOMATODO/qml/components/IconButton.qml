@@ -8,6 +8,7 @@ Item {
 	property color color: ColorStyle.mainColor
 	property color hoverColor: ColorStyle.lightColor
 	property string iconSrc: "qrc:assets/icon/plus.svg"
+	property alias hovered: iconArea.containsMouse
 
 	width: 20
 	height: 20
@@ -43,7 +44,7 @@ Item {
 			}
 		}
 
-		ColorOverlay{
+		ColorOverlay {
 			anchors.fill: iconButton
 			source:iconButton
 			color: attributes.iconColor

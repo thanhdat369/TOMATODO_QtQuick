@@ -13,5 +13,6 @@
         <file>assets/fonts/Ubuntu_Mono/UbuntuMono-Regular.ttf</file>
         <file>assets/fonts/Ubuntu_Mono/UFL.txt</file>
         <file>assets/icon/down.svg</file>
+        <file>assets/icon/close.svg</file>
     </qresource>
 </RCC>
