@@ -44,7 +44,7 @@ Item {
 			}
 		}
 
-		ColorOverlay{
+		ColorOverlay {
 			anchors.fill: iconButton
 			source:iconButton
 			color: attributes.iconColor

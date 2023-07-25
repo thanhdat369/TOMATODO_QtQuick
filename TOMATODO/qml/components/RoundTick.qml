@@ -1,4 +1,7 @@
 import QtQuick 2.15
+import QtGraphicalEffects 1.15
+
+import '../style'
 
 Rectangle {
 	id: root
@@ -12,18 +15,26 @@ Rectangle {
 
 	signal clicked()
 
-//	Image {
-//		id: iconTicked
+	Image {
+		id: iconTicked
 
-//		visible: isDone
+		visible: isDone
 
-//		width: root.width
-//		height: root.height
+		width: root.width
+		height: root.height
 
-//		anchors.centerIn: parent.Center
+		anchors.centerIn: parent.Center
 
-//		source: "qrc:assets/icon/tick.svg"
-//	}
+		source: "qrc:assets/icon/tick.svg"
+	}
+
+	ColorOverlay {
+		anchors.fill: iconTicked
+		visible: iconTicked.visible
+		source:iconTicked
+		antialiasing: true
+		color: ColorStyle.backgroundColor
+	}
 
 	MouseArea {
 		id: mouseArea
