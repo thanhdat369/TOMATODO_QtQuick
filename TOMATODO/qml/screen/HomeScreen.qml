@@ -66,7 +66,12 @@ Item {
 		delegate: TaskCard {
 			taskID: model.id
 			taskName: model.name
-			taskCardItemmodel: tomatodoModel
+
+			onRemoveTask: {
+				if(model) {
+					tomatodoModel.deleteItem(model.id);
+				}
+			}
 
 			onItemClick: {
 				poromodoLoader.active = true;
