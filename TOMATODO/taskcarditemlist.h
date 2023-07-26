@@ -3,6 +3,7 @@
 
 #include <QAbstractListModel>
 #include <QSqlQueryModel>
+#include <QSqlQuery>
 class TaskCardItemList : public QSqlQueryModel
 {
 	Q_OBJECT
@@ -22,6 +23,7 @@ public:
 private:
 public slots:
 	void updateModel();
+	bool deleteItem(int id);
 //	int getId();
 };
 

@@ -27,3 +27,17 @@ void TaskCardItemList::updateModel()
 {
 	this->setQuery("select * from tomatodo");
 }
+
+bool TaskCardItemList::deleteItem(int id)
+{
+	QSqlQuery query;
+	query.prepare("delete from tomatodo where id = ?");
+	query.addBindValue(id);
+	bool isSuccess = query.exec();
+
+	if(isSuccess) {
+		this->updateModel();
+		return true;
+	}
+	return false;
+}

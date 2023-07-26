@@ -7,8 +7,10 @@ Rectangle {
 
 	property string taskID: "0"
 	property string taskName: "0"
+//	property QtObject taskCardItemmodel: null
 
 	signal itemClick()
+	signal removeTask()
 
 	implicitWidth: 431
 	implicitHeight: 50
@@ -54,7 +56,6 @@ Rectangle {
 	}
 
 	DeadlineBox {
-
 		id: deadlineBox
 
 		anchors.right: root.right
@@ -119,7 +120,7 @@ Rectangle {
 		iconSrc: "qrc:/assets/icon/close.svg"
 
 		onClicked: {
-			console.log("remove");
+			root.removeTask();
 		}
 	}
 
@@ -131,9 +132,7 @@ Rectangle {
 				return ColorStyle.mainHoverColor;
 			}
 
-			return root.state == "check" ?  ColorStyle.secondaryColor:ColorStyle.mainColor
-
-
+			return root.state == "check" ?  ColorStyle.secondaryColor:ColorStyle.mainColor;
 		}
 	}
 }
