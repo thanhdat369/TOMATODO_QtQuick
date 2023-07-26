@@ -7,6 +7,7 @@ Rectangle {
 
 	property string taskID: "0"
 	property string taskName: "0"
+	property QtObject taskCardItemmodel: null
 
 	signal itemClick()
 
@@ -54,7 +55,6 @@ Rectangle {
 	}
 
 	DeadlineBox {
-
 		id: deadlineBox
 
 		anchors.right: root.right
@@ -119,7 +119,9 @@ Rectangle {
 		iconSrc: "qrc:/assets/icon/close.svg"
 
 		onClicked: {
-			console.log("remove");
+			if(taskCardItemmodel) {
+				taskCardItemmodel.deleteItem(root.taskID);
+			}
 		}
 	}
 
@@ -131,9 +133,7 @@ Rectangle {
 				return ColorStyle.mainHoverColor;
 			}
 
-			return root.state == "check" ?  ColorStyle.secondaryColor:ColorStyle.mainColor
-
-
+			return root.state == "check" ?  ColorStyle.secondaryColor:ColorStyle.mainColor;
 		}
 	}
 }

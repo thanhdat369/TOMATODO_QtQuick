@@ -66,6 +66,7 @@ Item {
 		delegate: TaskCard {
 			taskID: model.id
 			taskName: model.name
+			taskCardItemmodel: tomatodoModel
 
 			onItemClick: {
 				poromodoLoader.active = true;
