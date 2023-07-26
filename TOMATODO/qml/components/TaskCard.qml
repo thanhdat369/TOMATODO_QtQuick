@@ -7,9 +7,10 @@ Rectangle {
 
 	property string taskID: "0"
 	property string taskName: "0"
-	property QtObject taskCardItemmodel: null
+//	property QtObject taskCardItemmodel: null
 
 	signal itemClick()
+	signal removeTask()
 
 	implicitWidth: 431
 	implicitHeight: 50
@@ -119,9 +120,7 @@ Rectangle {
 		iconSrc: "qrc:/assets/icon/close.svg"
 
 		onClicked: {
-			if(taskCardItemmodel) {
-				taskCardItemmodel.deleteItem(root.taskID);
-			}
+			root.removeTask();
 		}
 	}
 
