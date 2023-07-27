@@ -1,111 +1,140 @@
 import QtQuick 2.15
+import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
 import "../style"
 
-Rectangle {
+Popup {
 	id: root
-	color: ColorStyle.backgroundColor
-	border.color: ColorStyle.mainColor
-	border.width: 3
-	implicitWidth: 400
-	implicitHeight: 250
-	radius: 20
 
-	property string taskName: "Task Name Can Edit"
-	property int taskMode: PomodoroPicker.TaskMode.Edit
-
-	enum TaskMode{
+	enum TaskMode {
 		Create,
 		Edit
 	}
+	property alias taskName: taskLabel.text
 
-	Text {
-		id: title
-		anchors.top: root.top
-		anchors.left: root.left
-		anchors.topMargin: 20
-		anchors.leftMargin: 20
+	property int taskMode: PomodoroPicker.TaskMode.Edit
 
-		font.family: FontStyle.ubuntuMonoBold.name
-		font.pixelSize: 30
-		font.styleName: "normal"
+	signal okButtonClicked()
 
-		color: ColorStyle.mainColor
+	function calculateTime() {
+		console.log(firstSecField.text);
+		let sec = parseInt(firstSecField.text) * 10 + parseInt(secondSecField.text);
+		let min = parseInt(firstMinField.text) * 10 + parseInt(secondMinField.text);
 
-		text: internal.title
+		return min * 60 + sec;
 	}
 
-	ColumnLayout {
-		anchors.centerIn: root
-		spacing: 20
+	implicitWidth: 400
+	implicitHeight: 250
+	modal: true
 
-		RowLayout {
-			Layout.alignment: Qt.AlignCenter
-			spacing: 10
+	background: null
 
-			NumberRoundedBox{
-				id: firstMinField
+	contentItem: Rectangle {
+		id: rectangleMain
+		implicitWidth: root.width
+		implicitHeight: root.height
+		color: ColorStyle.backgroundColor
+		border.color: ColorStyle.mainColor
+		border.width: 3
+		radius: 20
 
-			}
+		Text {
+			id: title
+			anchors.top: rectangleMain.top
+			anchors.left: rectangleMain.left
+			anchors.topMargin: 20
+			anchors.leftMargin: 20
 
-			NumberRoundedBox{
-				id: secondMinField
-			}
+			font.family: FontStyle.ubuntuMonoBold.name
+			font.pixelSize: 30
+			font.styleName: "normal"
 
-			Rectangle {
-				implicitWidth: 10
-				implicitHeight: 50
-				color: "transparent"
+			color: ColorStyle.mainColor
 
-				Text {
-					anchors.centerIn: parent
-					text: ":"
-					color: ColorStyle.mainColor
-					font.pixelSize: 30
+			text: internal.title
+		}
+
+		ColumnLayout {
+			anchors.centerIn: rectangleMain
+			spacing: 20
+
+			RowLayout {
+				Layout.alignment: Qt.AlignCenter
+				spacing: 10
+
+				NumberRoundedBox{
+					id: firstMinField
+					text: "3"
+				}
+
+				NumberRoundedBox{
+					id: secondMinField
+				}
+
+				Rectangle {
+					implicitWidth: 10
+					implicitHeight: 50
+					color: "transparent"
+
+					Text {
+						anchors.centerIn: parent
+						text: ":"
+						color: ColorStyle.mainColor
+						font.pixelSize: 30
+					}
+				}
+
+				NumberRoundedBox{
+					id: firstSecField
+				}
+
+				NumberRoundedBox{
+					id: secondSecField
 				}
 			}
 
-			NumberRoundedBox{
-				id: firstSecField
+			TextEdit {
+				id: taskLabel
+				Layout.alignment: Qt.AlignCenter
+
+				font.family: FontStyle.ubuntuMonoBold.name
+				font.pixelSize: 24
+				color: ColorStyle.mainColor
+
+				text: "Test"
+			}
+		}
+
+		RowLayout {
+			id: buttonLayout
+			spacing: 10
+
+			anchors.right: rectangleMain.right
+			anchors.bottom: rectangleMain.bottom
+
+			anchors.rightMargin: 20
+			anchors.bottomMargin: 20
+
+			Layout.fillWidth: true
+
+			RoundedButton {
+				id: okButton
+				text: "OK"
+				onClicked: {
+					root.okButtonClicked();
+				}
 			}
 
-			NumberRoundedBox{
-				id: secondSecField
+			RoundedButton {
+				id: cancelButton
+				style: RoundedButton.ButtonStyle.CancelButton
+				text: "Cancel"
+
+				onClicked: {
+					root.close();
+				}
 			}
-		}
-
-		Text {
-			id: taskLabel
-			Layout.alignment: Qt.AlignCenter
-
-			font.family: FontStyle.ubuntuMonoBold.name
-			font.pixelSize: 24
-			color: ColorStyle.mainColor
-
-			text: root.taskName
-		}
-	}
-
-	RowLayout {
-		id: buttonLayout
-		spacing: 10
-
-		anchors.right: root.right
-		anchors.bottom: root.bottom
-
-		anchors.rightMargin: 20
-		anchors.bottomMargin: 20
-
-		Layout.fillWidth: true
-
-		RoundedButton {
-			id: okButton
-			text: "OK"
-		}
-
-		RoundedButton {
-			style: RoundedButton.ButtonStyle.CancelButton
-			text: "Cancel"
 		}
 	}
 

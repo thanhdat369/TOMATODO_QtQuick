@@ -14,6 +14,8 @@ Item {
 	property int style: RoundedButton.ButtonStyle.AcceptButton
 	property string text: "OK"
 
+	signal clicked()
+
 	Rectangle {
 		id: button
 
@@ -35,6 +37,16 @@ Item {
 			color: ColorStyle.lightColor
 
 			text: root.text
+		}
+	}
+
+	MouseArea {
+		id: mouseArea
+		hoverEnabled: true
+		anchors.fill: parent
+
+		onClicked: {
+			root.clicked();
 		}
 	}
 
