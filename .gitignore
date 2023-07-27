@@ -77,3 +77,4 @@ build/
 */build-*/
 */build/
 */CMakeLists.txt.user
+*.db

@@ -4,6 +4,7 @@ import QtQuick.Controls 2.15
 import "layout"
 import "../components"
 import "../style"
+
 Item {
 	id: root
 
@@ -41,6 +42,23 @@ Item {
 		id: iconPlus
 		anchors.top: colummBig.bottom
 		anchors.right: listItem.right
+
+		onClicked: {
+			pickerPopup.open();
+		}
+	}
+
+	PomodoroPicker {
+		id: pickerPopup
+		anchors.centerIn: parent
+
+		onOkButtonClicked: {
+			let timeOrigin = pickerPopup.calculateTime();
+			if(root.tomatodoModel && timeOrigin) {
+				root.tomatodoModel.addNewTask(pickerPopup.taskName,timeOrigin);
+				pickerPopup.close();
+			}
+		}
 	}
 
 	ListView {

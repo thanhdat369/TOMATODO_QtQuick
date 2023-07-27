@@ -41,3 +41,20 @@ bool TaskCardItemList::deleteItem(int id)
 	}
 	return false;
 }
+
+bool TaskCardItemList::addNewTask(QString name, int originTime)
+{
+	QSqlQuery query;
+	query.prepare("insert into tomatodo (name,originalTime) values (?,?)");
+	query.addBindValue(name);
+	query.addBindValue(originTime);
+	bool isSuccess = query.exec();
+
+	if(isSuccess) {
+		qDebug("Here");
+		this->updateModel();
+		return true;
+	}
+	qDebug("Cannot");
+	return false;
+}

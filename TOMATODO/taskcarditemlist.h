@@ -24,6 +24,7 @@ private:
 public slots:
 	void updateModel();
 	bool deleteItem(int id);
+	bool addNewTask(QString name, int originTime);
 //	int getId();
 };
 
