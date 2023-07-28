@@ -84,6 +84,7 @@ Item {
 		delegate: TaskCard {
 			taskID: model.id
 			taskName: model.name
+			originalTime: parseInt(model.originalTime)
 
 			onRemoveTask: {
 				if(model) {
