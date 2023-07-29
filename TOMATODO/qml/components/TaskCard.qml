@@ -7,6 +7,7 @@ Rectangle {
 
 	property string taskID: "0"
 	property string taskName: "0"
+	property int originalTime: 0
 //	property QtObject taskCardItemmodel: null
 
 	signal itemClick()
@@ -61,6 +62,7 @@ Rectangle {
 		anchors.right: root.right
 		implicitHeight: root.height
 		implicitWidth: 50
+		deadlineTime: root.originalTime.toString() + " min"
 
 		backgroundColor: internal.cardColor
 

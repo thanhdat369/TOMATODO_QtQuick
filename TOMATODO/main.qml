@@ -24,8 +24,11 @@ Window {
 
 	color: ColorStyle.backgroundColor
 
-	HomeScreen {
-		anchors.fill: parent
-		tomatodoModel: myModel
+//	HomeScreen {
+//		anchors.fill: parent
+//		tomatodoModel: myModel
+//	}
+	TomatodoCalendar{
+
 	}
 }

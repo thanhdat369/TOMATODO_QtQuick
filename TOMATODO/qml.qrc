@@ -21,5 +21,6 @@
         <file>qml/components/RoundedButton.qml</file>
         <file>qml/style/FontStyle.qml</file>
         <file>qml/components/DropdownBox.qml</file>
+        <file>qml/components/TomatodoCalendar.qml</file>
     </qresource>
 </RCC>

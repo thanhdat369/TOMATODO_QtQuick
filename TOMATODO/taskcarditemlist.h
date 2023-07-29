@@ -11,9 +11,11 @@ class TaskCardItemList : public QSqlQueryModel
 public:
 	enum Roles {
 		IdRole = Qt::UserRole + 1,      // id
-		FNameRole,                      // Firt name
-		SNameRole,                      // Last name
-		NikRole                         // Nik name
+		NameRole,                      // Firt name
+		StartedDateRole,
+		OriginalTimeRole,                      // Last name
+		RemainTimeRole,
+		DoneRole                         // Nik name
 	};
 	explicit TaskCardItemList(QObject *parent = nullptr);
 

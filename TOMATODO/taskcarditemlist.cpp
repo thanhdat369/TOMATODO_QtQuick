@@ -19,7 +19,11 @@ QHash<int, QByteArray> TaskCardItemList::roleNames() const
 {
 	QHash<int, QByteArray> roles;
 	    roles[IdRole] = "id";
-		roles[FNameRole] = "name";
+		roles[NameRole] = "name";
+		roles[StartedDateRole] = "startedDate";
+		roles[OriginalTimeRole] = "originalTime";
+		roles[RemainTimeRole] = "remainTime";
+		roles[DoneRole] = "isDone";
 		return roles;
 }
 
