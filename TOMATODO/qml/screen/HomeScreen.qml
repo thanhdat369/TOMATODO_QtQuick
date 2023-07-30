@@ -33,7 +33,6 @@ Item {
 		DatePicker {
 			id: datePicker
 			Layout.alignment: Qt.AlignCenter
-			color: ColorStyle.mainColor
 		}
 
 	}

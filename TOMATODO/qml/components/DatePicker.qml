@@ -5,12 +5,13 @@ import "../style"
 Item {
 	id: root
 
-	property color color: "white"
-
 	height: 20
 	width: 260
-
+	property alias selectedDate: tomatodoCalendar.selectedDate
 	RowLayout {
+		id: dayRowLayout
+		Layout.fillWidth: true
+		Layout.fillHeight: true
 		anchors.horizontalCenter: root.horizontalCenter
 		spacing: 5
 
@@ -24,9 +25,9 @@ Item {
 
 			IconButton {
 				id: iconBackButton
-				color: root.color
 
 				iconSrc: "qrc:assets/icon/arrow-back.svg"
+				color: internal.color
 			}
 		}
 
@@ -40,10 +41,11 @@ Item {
 				id: dateTimeText
 
 				anchors.centerIn: parent
-				color: root.color
 
 				font.family: FontStyle.ubuntuMonoRegular.name
-				text: qsTr("10 January 2023")
+				color: internal.color
+
+				text: root.selectedDate.toDateString();
 
 			}
 		}
@@ -59,11 +61,27 @@ Item {
 			IconButton {
 				id: iconFowardButton
 
-				color: root.color
-
 				iconSrc: "qrc:assets/icon/arrow-foward.svg"
+				color: internal.color
 			}
 		}
 	}
+	MouseArea {
+		id: mouseArea
+		anchors.fill: parent
+		hoverEnabled: true
 
+		onClicked: {
+			tomatodoCalendar.open();
+		}
+	}
+	TomatodoCalendar {
+		id: tomatodoCalendar
+	}
+
+	QtObject {
+		id: internal
+
+		property color color: mouseArea.containsMouse ? ColorStyle.lightColor : ColorStyle.mainColor
+	}
 }
