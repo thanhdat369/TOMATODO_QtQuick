@@ -5,104 +5,148 @@ import QtQuick.Controls.Styles 1.4
 import QtQuick.Controls 2.15
 import '../style'
 
-Calendar {
-	id: calendar
-	implicitHeight: 300
-	implicitWidth:  400
-	anchors.centerIn: parent
-	style: CalendarStyle {
-		background: Rectangle {
-			width: calendar.width
-			color: ColorStyle.backgroundColor
-		}
+Popup {
+	id: root
 
-		gridVisible: false
+	implicitHeight: 250
+	implicitWidth: 300
+	modal: true
 
-		navigationBar: Rectangle {
-			width: calendar.width
-			height: 30
-			color: ColorStyle.backgroundColor
-			RowLayout {
-				anchors.centerIn: parent
+	property alias selectedDate: calendar.selectedDate
 
-				IconButton {
-					id: backMonthButton
+	Calendar {
+		id: calendar
 
-					iconSrc: "qrc:/assets/icon/arrow-back.svg"
-					color: ColorStyle.lightColor
-					hoverColor: ColorStyle.mainColor
+		anchors.centerIn: parent
 
-					onClicked: {
-						calendar.showPreviousMonth();
+		width: root.width
+		height: root.height
+
+		style: CalendarStyle {
+			gridVisible: false
+
+			background: Rectangle {
+				width: calendar.width
+				color: ColorStyle.backgroundColor
+			}
+			navigationBar: Rectangle {
+				width: calendar.width
+				height: 30
+				color: ColorStyle.backgroundColor
+
+				RowLayout {
+					anchors.centerIn: parent
+
+					IconButton {
+						id: backMonthButton
+
+						implicitWidth: 10
+						implicitHeight: 10
+
+						iconSrc: "qrc:/assets/icon/arrow-back.svg"
+
+						color: ColorStyle.lightColor
+						hoverColor: ColorStyle.mainColor
+
+						onClicked: {
+							calendar.showPreviousMonth();
+						}
+					}
+					Label {
+						Layout.leftMargin: 10
+						Layout.rightMargin: 10
+
+						text: styleData.title
+						color: ColorStyle.lightColor
+					}
+
+					IconButton {
+						id: nextMonthButton
+
+						implicitWidth: 10
+						implicitHeight: 10
+
+						iconSrc: "qrc:/assets/icon/arrow-foward.svg"
+						color: ColorStyle.lightColor
+						hoverColor: ColorStyle.mainColor
+						onClicked: {
+							calendar.showNextMonth();
+						}
 					}
 				}
+			}
+
+			dayOfWeekDelegate: Rectangle {
+				height: 30
+				color: ColorStyle.backgroundColor
 				Label {
-					Layout.leftMargin: 10
-					Layout.rightMargin: 10
-					text: styleData.title
+					anchors.centerIn: parent
+					text:  control.locale.dayName(styleData.dayOfWeek, control.dayOfWeekFormat)
+					color: ColorStyle.lightColor
+				}
+			}
+
+			dayDelegate: Rectangle {
+				color: ColorStyle.backgroundColor
+				visible: styleData.visibleMonth
+
+				Rectangle {
+					width: dayLabel.font.pixelSize * 2
+					height: width
+					border.color: internal.getDayBorderColor(styleData)
+
+					radius: width / 2
+					color: "transparent"
+					anchors.centerIn: parent
+				}
+
+
+				Label {
+					id: dayLabel
+					text: styleData.date.getDate()
+					anchors.centerIn: parent
 					color: ColorStyle.lightColor
 				}
 
-				IconButton {
-					id: nextMonthButton
+				MouseArea {
+					id: dayMouseArea
 
-					iconSrc: "qrc:/assets/icon/arrow-foward.svg"
-					color: ColorStyle.lightColor
-					hoverColor: ColorStyle.mainColor
+					anchors.fill: parent
+					preventStealing: true
+					propagateComposedEvents: true
+
 					onClicked: {
-						calendar.showNextMonth();
+						calendar.selectedDate = styleData.date
+					}
+
+					onDoubleClicked: {
+						root.close();
 					}
 				}
 			}
 		}
+	}
+	QtObject {
+		id: internal
 
-		dayOfWeekDelegate: Rectangle {
-			height: 30
-			color: ColorStyle.backgroundColor
-			Label {
-				anchors.centerIn: parent
-				text:  control.locale.dayName(styleData.dayOfWeek, control.dayOfWeekFormat)
-				color: ColorStyle.lightColor
-			}
-		}
-
-		dayDelegate: Rectangle {
-			color: ColorStyle.backgroundColor
-			visible: styleData.visibleMonth
-			//			gradient: Gradient {
-			//				GradientStop {
-			//					position: 0.00
-			//					color: styleData.selected ? "#111" : (styleData.visibleMonth && styleData.valid ? "#444" : "#666");
-			//				}
-			//				GradientStop {
-			//					position: 1.00
-			//					color: styleData.selected ? "#444" : (styleData.visibleMonth && styleData.valid ? "#111" : "#666");
-			//				}
-			//				GradientStop {
-			//					position: 1.00
-			//					color: styleData.selected ? "#777" : (styleData.visibleMonth && styleData.valid ? "#111" : "#666");
-			//				}
-			//			}
-
-			Label {
-				text: styleData.date.getDate()
-				anchors.centerIn: parent
-				color: ColorStyle.lightColor
+		function getDayBorderColor(styleData) {
+			if(!styleData) {
+				return "trasparent";
 			}
 
-			//			Rectangle {
-			//				width: parent.width
-			//				height: 1
-			//				color: "white"
-			//				anchors.bottom: parent.bottom
-			//			}
+			if(styleData.today) {
+				return ColorStyle.secondaryColor;
+			}
 
-			//			Rectangle {
-			//				width: 1
-			//				height: parent.height
-			//				color: "#555"
-			//				anchors.right: parent.right
-			//			}
+			if(styleData.hovered) {
+				return ColorStyle.lightColor;
+			}
+
+			if(styleData.selected) {
+				return ColorStyle.mainColor;
+			}
+
+			return "trasparent";
 		}
 	}
 }
