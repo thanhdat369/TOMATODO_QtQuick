@@ -7,6 +7,7 @@ Rectangle {
 
 	property string taskID: "0"
 	property string taskName: "0"
+	property int remainTime: 0
 	property int originalTime: 0
 //	property QtObject taskCardItemmodel: null
 
@@ -61,8 +62,8 @@ Rectangle {
 
 		anchors.right: root.right
 		implicitHeight: root.height
-		implicitWidth: 50
-		deadlineTime: root.originalTime.toString() + " min"
+		width: 70
+		deadlineTime: root.originalTime
 
 		backgroundColor: internal.cardColor
 

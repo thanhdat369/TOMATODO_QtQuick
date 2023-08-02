@@ -5,7 +5,10 @@ Item {
 	id: root
 
 	implicitWidth: 300
-	property string deadlineTime: "30 min"
+
+	property int workedTime: 0
+	property int deadlineTime: 0
+
 	property color backgroundColor: ColorStyle.mainColor
 	property color textColor: ColorStyle.lightColor
 	Rectangle {
@@ -25,35 +28,30 @@ Item {
 
 		radius: 20
 
-		ColumnLayout {
+		Text {
+			id: time
+
 			anchors.centerIn: parent
-			spacing: 6
 
-			Text {
-				id: deadlineText
+			font.family: FontStyle.ubuntuMonoRegular.name
+			font.bold: true
+			font.pixelSize: 14
 
-				Layout.fillWidth: true
+			color: root.textColor
 
-				font.family: FontStyle.ubuntuMonoRegular.name
-				font.pixelSize: 16
+			text: internal.convertToMin(root.deadlineTime, root.workedTime)
+		}
+	}
 
-				font.bold: true
-				color: root.textColor
+	QtObject {
+		id: internal
 
-				text: qsTr("2pm")
-			}
-
-			Text {
-				id: time
-
-				font.family: FontStyle.ubuntuMonoRegular.name
-				font.bold: true
-				font.pixelSize: 12
-
-				color: root.textColor
-
-				text: root.deadlineTime
-			}
+		function convertToMin(originalTimeSec, workedTimeSec) {
+			let originalTimeMin = Math.ceil(originalTimeSec / 60);
+			let workedTimeMin = Math.ceil(workedTimeSec / 60);
+			return workedTimeMin.toString()
+					+ "/" + originalTimeMin.toString()
+					+ " " + qsTr("min");
 		}
 	}
 }
