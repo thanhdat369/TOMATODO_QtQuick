@@ -16,6 +16,7 @@ Rectangle{
 	radius: width * 0.5
 
 	property int secondRemain: 20
+	property alias isRunning: timer.running
 
 	ColumnLayout{
 		anchors.centerIn: circleBox

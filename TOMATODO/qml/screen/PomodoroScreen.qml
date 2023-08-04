@@ -7,7 +7,10 @@ import "../style"
 Rectangle {
 	id: root
 
-	property string taskName: "Task Tomatodo"
+	property alias timeRemain: poromodoCircle.secondRemain
+	property alias isRunning: poromodoCircle.isRunning
+
+	property QtObject taskModel: null
 
 	color: ColorStyle.backgroundColor
 
@@ -23,6 +26,8 @@ Rectangle {
 			id: topLayout
 
 			Layout.fillWidth: true
+
+			hasBackButton: !root.isRunning
 
 			onBackClick: {
 				root.backClick();
@@ -42,6 +47,7 @@ Rectangle {
 
 			PomodoroCircle {
 				id: poromodoCircle
+				secondRemain: root.taskModel ? root.taskModel.timeRemain : 0
 			}
 
 			Text {
@@ -54,7 +60,7 @@ Rectangle {
 				color: ColorStyle.mainColor
 				font.family: FontStyle.ubuntuMonoBold.name
 
-				text: root.taskName
+				text:root.taskModel ? root.taskModel.name : "No name"
 			}
 		}
 	}

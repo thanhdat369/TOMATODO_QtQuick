@@ -11,11 +11,11 @@ class TaskCardItemList : public QSqlQueryModel
 public:
 	enum Roles {
 		IdRole = Qt::UserRole + 1,      // id
-		NameRole,                      // Firt name
+		NameRole,
 		StartedDateRole,
-		OriginalTimeRole,                      // Last name
+		OriginalTimeRole,
 		RemainTimeRole,
-		DoneRole                         // Nik name
+		DoneRole
 	};
 	explicit TaskCardItemList(QObject *parent = nullptr);
 
@@ -27,6 +27,7 @@ public slots:
 	void updateModel();
 	bool deleteItem(int id);
 	bool addNewTask(QString name, int originTime);
+	bool updateTimeRemain(int id,int timeRemain);
 //	int getId();
 };
 

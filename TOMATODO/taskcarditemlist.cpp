@@ -22,7 +22,7 @@ QHash<int, QByteArray> TaskCardItemList::roleNames() const
 		roles[NameRole] = "name";
 		roles[StartedDateRole] = "startedDate";
 		roles[OriginalTimeRole] = "originalTime";
-		roles[RemainTimeRole] = "remainTime";
+		roles[RemainTimeRole] = "timeRemain";
 		roles[DoneRole] = "isDone";
 		return roles;
 }
@@ -49,16 +49,29 @@ bool TaskCardItemList::deleteItem(int id)
 bool TaskCardItemList::addNewTask(QString name, int originTime)
 {
 	QSqlQuery query;
-	query.prepare("insert into tomatodo (name,originalTime) values (?,?)");
+	query.prepare("insert into tomatodo (name,originalTime,remainTime) values (?,?,?)");
 	query.addBindValue(name);
 	query.addBindValue(originTime);
+	query.addBindValue(originTime); // init remainTime = original
 	bool isSuccess = query.exec();
 
 	if(isSuccess) {
-		qDebug("Here");
 		this->updateModel();
 		return true;
 	}
-	qDebug("Cannot");
+	return false;
+}
+
+bool TaskCardItemList::updateTimeRemain(int id,int timeRemain) {
+	QSqlQuery query;
+	query.prepare("update tomatodo set remainTime = ? where id = ?");
+	query.addBindValue(timeRemain);
+	query.addBindValue(id);
+	bool isSuccess = query.exec();
+
+	if(isSuccess) {
+		this->updateModel();
+		return true;
+	}
 	return false;
 }
