@@ -70,13 +70,13 @@ Item {
 		width: 435
 		height: root.height - colummBig.height
 
+		model: tomatodoModel
+
 		orientation: ListView.Vertical
 
 		ScrollBar.vertical: ScrollBar {
-			active: true
+			active: false
 		}
-
-		model: tomatodoModel
 
 		spacing: 15
 
@@ -84,6 +84,7 @@ Item {
 			taskID: model.id
 			taskName: model.name
 			originalTime: parseInt(model.originalTime)
+			remainTime: parseInt(model.timeRemain)
 
 			onRemoveTask: {
 				if(model) {
@@ -92,6 +93,7 @@ Item {
 			}
 
 			onItemClick: {
+				internal.currentModel = model
 				poromodoLoader.active = true;
 			}
 		}
@@ -100,6 +102,7 @@ Item {
 	Loader {
 		id: poromodoLoader
 		anchors.fill: parent
+
 		active: false
 		sourceComponent: poromodoScreenComponent
 
@@ -107,11 +110,13 @@ Item {
 			id: poromodoScreenComponent
 
 			PomodoroScreen {
-				id: settingScreen
+				id: pomodoroScreen
 
 				anchors.fill: parent
+				taskModel: internal.currentModel ? internal.currentModel : null
 
 				onBackClick: {
+					root.tomatodoModel.updateTimeRemain(internal.currentModel.id, pomodoroScreen.timeRemain);
 					poromodoLoader.active = false;
 				}
 
@@ -141,5 +146,12 @@ Item {
 				}
 			}
 		}
+	}
+
+	QtObject {
+		id: internal
+
+		property int currentIndex: 0
+		property QtObject currentModel: null
 	}
 }

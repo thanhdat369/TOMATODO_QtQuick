@@ -63,9 +63,11 @@ Rectangle {
 		anchors.right: root.right
 		implicitHeight: root.height
 		width: 70
-		deadlineTime: root.originalTime
 
 		backgroundColor: internal.cardColor
+
+		deadlineTime: root.originalTime
+		workedTime: root.originalTime - root.remainTime
 
 		MouseArea {
 			anchors.fill: parent

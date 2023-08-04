@@ -17,7 +17,6 @@ Popup {
 	signal okButtonClicked()
 
 	function calculateTime() {
-		console.log(firstSecField.text);
 		let sec = parseInt(firstSecField.text) * 10 + parseInt(secondSecField.text);
 		let min = parseInt(firstMinField.text) * 10 + parseInt(secondMinField.text);
 
