@@ -9,10 +9,11 @@ Rectangle {
 	property string taskName: "0"
 	property int remainTime: 0
 	property int originalTime: 0
-//	property QtObject taskCardItemmodel: null
+	property alias isDone: roundTick.isDone
 
 	signal itemClick()
 	signal removeTask()
+	signal doneClick()
 
 	implicitWidth: 431
 	implicitHeight: 50
@@ -23,6 +24,10 @@ Rectangle {
 	radius: 20
 
 	color: "transparent"
+
+	onIsDoneChanged: {
+		root.state = root.isDone ? "check" : "uncheck";
+	}
 
 	RowLayout {
 		spacing: 10
@@ -37,7 +42,8 @@ Rectangle {
 			color: internal.cardColor
 
 			onClicked: {
-				root.state = root.state == "check" ? "uncheck" : "check";
+				root.isDone = !root.isDone
+				root.doneClick();
 			}
 		}
 

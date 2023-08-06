@@ -81,10 +81,12 @@ Item {
 		spacing: 15
 
 		delegate: TaskCard {
+			id: taskCard
 			taskID: model.id
 			taskName: model.name
 			originalTime: parseInt(model.originalTime)
 			remainTime: parseInt(model.timeRemain)
+			isDone: model.isDone
 
 			onRemoveTask: {
 				if(model) {
@@ -95,6 +97,12 @@ Item {
 			onItemClick: {
 				internal.currentModel = model
 				poromodoLoader.active = true;
+			}
+
+			onDoneClick: {
+				if(model) {
+					tomatodoModel.tickDoneTask(model.id, taskCard.isDone);
+				}
 			}
 		}
 	}
