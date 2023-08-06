@@ -75,3 +75,16 @@ bool TaskCardItemList::updateTimeRemain(int id,int timeRemain) {
 	}
 	return false;
 }
+
+bool TaskCardItemList::tickDoneTask(int id,bool isDone) {
+	QSqlQuery query;
+	query.prepare("update tomatodo set isDone = ? where id = ?");
+	query.addBindValue(isDone ? 1 : 0); // convert to int
+	query.addBindValue(id);
+	bool isSuccess = query.exec();
+	if(isSuccess) {
+		this->updateModel();
+		return true;
+	}
+	return false;
+}

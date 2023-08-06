@@ -28,6 +28,7 @@ public slots:
 	bool deleteItem(int id);
 	bool addNewTask(QString name, int originTime);
 	bool updateTimeRemain(int id,int timeRemain);
+	bool tickDoneTask(int id,bool isDone);
 //	int getId();
 };
 
