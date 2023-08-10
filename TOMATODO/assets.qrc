@@ -14,5 +14,6 @@
         <file>assets/fonts/Ubuntu_Mono/UFL.txt</file>
         <file>assets/icon/down.svg</file>
         <file>assets/icon/close.svg</file>
+        <file>assets/icon/tomato.ico</file>
     </qresource>
 </RCC>

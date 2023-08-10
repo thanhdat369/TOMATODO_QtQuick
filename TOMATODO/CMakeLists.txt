@@ -26,6 +26,11 @@ set(PROJECT_SOURCES
         assets.qrc
 )
 
+if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+    enable_language("RC")
+    set (WIN32_RESOURCES ${CMAKE_CURRENT_SOURCE_DIR}/tomatodoApp.rc)
+endif()
+
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(TOMATODO
         MANUAL_FINALIZATION
@@ -45,10 +50,11 @@ else()
     else()
         add_executable(TOMATODO
           ${PROJECT_SOURCES}
+          ${WIN32_RESOURCES}
         )
     endif()
 endif()
-
+#qrc:/assets/icon/tomato.ico//
 target_link_libraries(TOMATODO
   PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick Qt5::Sql)
 
