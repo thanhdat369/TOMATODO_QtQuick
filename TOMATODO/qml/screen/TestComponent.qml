@@ -17,16 +17,4 @@ ScrollView {
 		delegate: TaskCard{}
 	}
 	}
-
-//	ListView {
-//		id: listItem
-//		anchors.fill: parent
-
-//		model: 20
-
-//		delegate: TaskCard {
-////						anchors.verticalCenter: parent.verticalCenter
-//		}
-//	}
-
 }

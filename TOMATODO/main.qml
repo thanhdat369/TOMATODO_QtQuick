@@ -7,7 +7,7 @@ import "qml/style"
 import "qml/components"
 import "qml/screen"
 
-Window {
+ApplicationWindow {
 	id: main_window
 	width: 500
 	height: 500
@@ -24,8 +24,16 @@ Window {
 
 	color: ColorStyle.backgroundColor
 
+    onClosing: {
+        main_window.hide();
+    }
+
 	HomeScreen {
 		anchors.fill: parent
 		tomatodoModel: myModel
-	}
+    }
+
+    TomatodoSystemTrayIcon {
+        id: tomatodoSysTrayIcon
+    }
 }

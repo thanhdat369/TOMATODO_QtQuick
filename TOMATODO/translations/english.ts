@@ -44,6 +44,19 @@
     </message>
 </context>
 <context>
+    <name>TomatodoSystemTrayIcon</name>
+    <message>
+        <location filename="../qml/components/TomatodoSystemTrayIcon.qml" line="19"/>
+        <source>Show</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/components/TomatodoSystemTrayIcon.qml" line="23"/>
+        <source>Quit</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>main</name>
     <message>
         <location filename="../main.qml" line="23"/>

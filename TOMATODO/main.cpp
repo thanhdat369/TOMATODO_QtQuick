@@ -2,7 +2,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
-
+#include <QTranslator>
 
 int main(int argc, char *argv[])
 {
@@ -11,6 +11,9 @@ int main(int argc, char *argv[])
 #endif
     QGuiApplication app(argc, argv);
 
+    QTranslator qTrans;
+    qTrans.load("vietnamese.qm",app.applicationDirPath());
+    app.installTranslator(&qTrans);
 
     QQmlApplicationEngine engine;
 	QSqlDatabase db;

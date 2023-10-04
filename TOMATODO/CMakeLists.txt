@@ -12,7 +12,17 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Quick)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick Sql)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS LinguistTools Core Quick Sql)
+
+#file(GLOB TS_FILES "${PROJECT_SOURCE_DIR}/translation/*.ts")
+SET(TS_FILES
+        ${PROJECT_SOURCE_DIR}/translations/english.ts
+        ${PROJECT_SOURCE_DIR}/translations/vietnamese.ts
+)
+
+qt5_create_translation(QM_FILES
+    ${PROJECT_SOURCE_DIR}
+    ${TS_FILES})
 
 set(PROJECT_SOURCES
         taskcarditemlist.h
@@ -44,6 +54,7 @@ else()
     if(ANDROID)
         add_library(TOMATODO SHARED
             ${PROJECT_SOURCES}
+            ${QM_FILES}
         )
 # Define properties for Android with Qt 5 after find_package() calls as:
 #    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
@@ -51,6 +62,7 @@ else()
         add_executable(TOMATODO
           ${PROJECT_SOURCES}
           ${WIN32_RESOURCES}
+          ${QM_FILES}
         )
     endif()
 endif()
