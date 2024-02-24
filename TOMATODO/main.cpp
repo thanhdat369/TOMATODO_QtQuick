@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
 	QSqlDatabase db;
 	db = QSqlDatabase::addDatabase("QSQLITE");
-	db.setDatabaseName(app.applicationDirPath() + "tomatodoDB.db");
+	db.setDatabaseName(app.applicationDirPath() + "/tomatodoDB.db");
 
 	bool connectStatus = db.open();
 
