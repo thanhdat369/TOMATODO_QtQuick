@@ -70,6 +70,9 @@ endif()
 target_link_libraries(TOMATODO
   PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick Qt5::Sql)
 
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/db/tomatodoDB.db
+     DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+
 set_target_properties(TOMATODO PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
@@ -85,4 +88,5 @@ install(TARGETS TOMATODO
 if(QT_VERSION_MAJOR EQUAL 6)
     qt_import_qml_plugins(TOMATODO)
     qt_finalize_executable(TOMATODO)
+
 endif()
