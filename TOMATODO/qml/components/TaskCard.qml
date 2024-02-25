@@ -14,6 +14,7 @@ Rectangle {
 	signal itemClick()
 	signal removeTask()
 	signal doneClick()
+	signal doubleClicked()
 
 	implicitWidth: 431
 	implicitHeight: 50
@@ -60,6 +61,16 @@ Rectangle {
 			color: internal.cardColor
 
 			text: root.taskName
+		}
+	}
+
+	MouseArea {
+		anchors.fill: parent
+
+		hoverEnabled: true
+
+		onDoubleClicked: {
+			root.doubleClicked();
 		}
 	}
 

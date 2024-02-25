@@ -64,7 +64,7 @@ bool TaskCardItemList::addNewTask(QString name, int originTime)
 
 bool TaskCardItemList::updateTimeRemain(int id,int timeRemain) {
 	QSqlQuery query;
-	query.prepare("update tomatodo set remainTime = ? where id = ?");
+    query.prepare("update tomatodo set remainTime = ? where id = ?");
 	query.addBindValue(timeRemain);
 	query.addBindValue(id);
 	bool isSuccess = query.exec();
@@ -74,6 +74,21 @@ bool TaskCardItemList::updateTimeRemain(int id,int timeRemain) {
 		return true;
 	}
 	return false;
+}
+
+bool TaskCardItemList::updateTask(int id, QString name, int timeOriginal) {
+    QSqlQuery query;
+    query.prepare("update tomatodo set name = ?, originalTime = ? where id = ?");
+    query.addBindValue(name);
+    query.addBindValue(timeOriginal);
+    query.addBindValue(id);
+    bool isSuccess = query.exec();
+
+    if(isSuccess) {
+        this->updateModel();
+        return true;
+    }
+    return false;
 }
 
 bool TaskCardItemList::tickDoneTask(int id,bool isDone) {
