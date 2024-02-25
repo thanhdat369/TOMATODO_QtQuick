@@ -10,9 +10,11 @@ Popup {
 		Create,
 		Edit
 	}
+
 	property alias taskName: taskLabel.text
 
 	property int taskMode: PomodoroPicker.TaskMode.Edit
+	property int taskId: -1
 
 	signal okButtonClicked()
 

@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     QTranslator qTrans;
-    qTrans.load("vietnamese.qm",app.applicationDirPath());
+    qTrans.load("english.qm",app.applicationDirPath());
     app.installTranslator(&qTrans);
 
     QQmlApplicationEngine engine;

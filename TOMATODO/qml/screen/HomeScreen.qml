@@ -8,7 +8,10 @@ import "../style"
 Item {
 	id: root
 
+	// TaskCardItemList.cpp
 	property alias tomatodoModel: listItem.model
+
+	property alias popUpMode: pickerPopup.taskMode
 
 	signal onItemClick
 
@@ -43,6 +46,7 @@ Item {
 		anchors.right: listItem.right
 
 		onClicked: {
+			pickerPopup.taskMode = PomodoroPicker.TaskMode.Create;
 			pickerPopup.open();
 		}
 	}
@@ -53,7 +57,16 @@ Item {
 
 		onOkButtonClicked: {
 			let timeOrigin = pickerPopup.calculateTime();
-			if(root.tomatodoModel && timeOrigin) {
+
+			if(!root.tomatodoModel || !timeOrigin) {
+				return;
+			}
+			if (pickerPopup.taskMode === PomodoroPicker.TaskMode.Edit) {
+				root.tomatodoModel.updateTask(taskId,pickerPopup.taskName,timeOrigin);
+				pickerPopup.taskId = -1;
+				pickerPopup.close();
+			}
+			else if (pickerPopup.taskMode === PomodoroPicker.TaskMode.Create) {
 				root.tomatodoModel.addNewTask(pickerPopup.taskName,timeOrigin);
 				pickerPopup.close();
 			}
@@ -103,6 +116,12 @@ Item {
 				if(model) {
 					tomatodoModel.tickDoneTask(model.id, taskCard.isDone);
 				}
+			}
+
+			onDoubleClicked: {
+				pickerPopup.taskMode = PomodoroPicker.TaskMode.Edit;
+				pickerPopup.taskId = model.id;
+				pickerPopup.open();
 			}
 		}
 	}
