@@ -4,6 +4,11 @@
 #include <QAbstractListModel>
 #include <QSqlQueryModel>
 #include <QSqlQuery>
+class QFile;
+class QGuiApplication;
+
+bool createDatabase(const QGuiApplication &app);
+
 class TaskCardItemList : public QSqlQueryModel
 {
 	Q_OBJECT

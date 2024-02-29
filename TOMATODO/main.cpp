@@ -16,13 +16,9 @@ int main(int argc, char *argv[])
     app.installTranslator(&qTrans);
 
     QQmlApplicationEngine engine;
-	QSqlDatabase db;
-	db = QSqlDatabase::addDatabase("QSQLITE");
-	db.setDatabaseName(app.applicationDirPath() + "/tomatodoDB.db");
 
-	bool connectStatus = db.open();
-
-	qDebug()<< "Connection to db" << connectStatus;
+	//TODO: Create a WARNING popup for this case
+	createDatabase(app); //This function returns BOOL value
 
 	TaskCardItemList *taskCardItemList = new TaskCardItemList();
 
