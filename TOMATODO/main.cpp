@@ -1,4 +1,5 @@
 #include "taskcarditemlist.h"
+#include "TomatodoUtils.h"
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
@@ -18,7 +19,7 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
 
 	//TODO: Create a WARNING popup for this case
-	createDatabase(app); //This function returns BOOL value
+	utils::createDatabase(app); //This function returns BOOL value
 
 	TaskCardItemList *taskCardItemList = new TaskCardItemList();
 

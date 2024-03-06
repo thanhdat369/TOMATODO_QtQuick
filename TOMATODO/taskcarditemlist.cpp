@@ -1,36 +1,5 @@
 #include "taskcarditemlist.h"
 #include <QDebug>
-#include <QFile>
-#include <QGuiApplication>
-
-bool createDatabase(const QGuiApplication &app) {
-	//	Database is a normal file. Check if file *.db is existed or not.
-	QFile databaseFile(app.applicationDirPath() + "/tomatodoDB.db");
-
-	QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-	db.setDatabaseName(app.applicationDirPath() + "/tomatodoDB.db");
-
-	if (!db.open()) {
-		return false;
-	}
-
-	// Create the necessary tables
-	QSqlQuery query;
-	query.prepare(
-	    "CREATE TABLE IF NOT EXISTS tomatodo ("
-	    "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-	    "name TEXT, "
-	    "startedDate TEXT NOT NULL DEFAULT (datetime('now', 'localtime')), "
-	    "originalTime INTEGER NOT NULL DEFAULT 0, "
-	    "remainTime INTEGER, "
-	    "isDone INTEGER)"
-	);
-	if (!query.exec()) {
-		return false;
-	}
-
-	return true; // Database already exists
-}
 
 TaskCardItemList::TaskCardItemList(QObject *parent)
     : QSqlQueryModel(parent)
