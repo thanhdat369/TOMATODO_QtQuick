@@ -4,6 +4,7 @@
 #include <QAbstractListModel>
 #include <QSqlQueryModel>
 #include <QSqlQuery>
+
 class TaskCardItemList : public QSqlQueryModel
 {
 	Q_OBJECT

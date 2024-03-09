@@ -1,4 +1,5 @@
 #include "taskcarditemlist.h"
+#include <QDebug>
 
 TaskCardItemList::TaskCardItemList(QObject *parent)
     : QSqlQueryModel(parent)

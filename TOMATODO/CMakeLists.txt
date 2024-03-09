@@ -31,6 +31,9 @@ set(PROJECT_SOURCES
         tomatodotaskitem.h
         tomatodotaskitem.cpp
 
+        TomatodoUtils.h
+        TomatodoUtils.cpp
+
         main.cpp
         qml.qrc
         assets.qrc
@@ -69,9 +72,6 @@ endif()
 #qrc:/assets/icon/tomato.ico//
 target_link_libraries(TOMATODO
   PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick Qt5::Sql)
-
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/db/tomatodoDB.db
-     DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
 set_target_properties(TOMATODO PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
