@@ -14,15 +14,15 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Quick)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS LinguistTools Core Quick Sql)
 
-#file(GLOB TS_FILES "${PROJECT_SOURCE_DIR}/translation/*.ts")
-SET(TS_FILES
-        ${PROJECT_SOURCE_DIR}/translations/english.ts
-        ${PROJECT_SOURCE_DIR}/translations/vietnamese.ts
-)
+# TODO change the I18N TO QT6
+# SET(TS_FILES
+#         ${PROJECT_SOURCE_DIR}/translations/english.ts
+#         ${PROJECT_SOURCE_DIR}/translations/vietnamese.ts
+# )
 
-qt5_create_translation(QM_FILES
-    ${PROJECT_SOURCE_DIR}
-    ${TS_FILES})
+# qt5_create_translation(QM_FILES
+#     ${PROJECT_SOURCE_DIR}
+#     ${TS_FILES})
 
 set(PROJECT_SOURCES
         taskcarditemlist.h
@@ -71,7 +71,7 @@ else()
 endif()
 #qrc:/assets/icon/tomato.ico//
 target_link_libraries(TOMATODO
-  PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick Qt5::Sql)
+  PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick Qt6::Sql)
 
 set_target_properties(TOMATODO PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
@@ -80,10 +80,6 @@ set_target_properties(TOMATODO PROPERTIES
     MACOSX_BUNDLE TRUE
     WIN32_EXECUTABLE TRUE
 )
-
-install(TARGETS TOMATODO
-    BUNDLE DESTINATION .
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
 if(QT_VERSION_MAJOR EQUAL 6)
     qt_import_qml_plugins(TOMATODO)
