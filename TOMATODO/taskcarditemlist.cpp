@@ -4,13 +4,13 @@
 TaskCardItemList::TaskCardItemList(QObject *parent)
     : QSqlQueryModel(parent)
 {
-	this->updateModel();
+	this->fetchDataFromDB();
 }
 
 QVariant TaskCardItemList::data(const QModelIndex &index, int role) const
 {
 	int columnId = role - Qt::UserRole - 1;
-//	// Create the index using a column ID
+	//Create the index using a column ID
 	QModelIndex modelIndex = this->index(index.row(), columnId);
 
 	return QSqlQueryModel::data(modelIndex, Qt::DisplayRole);
@@ -28,78 +28,83 @@ QHash<int, QByteArray> TaskCardItemList::roleNames() const
 		return roles;
 }
 
-void TaskCardItemList::updateModel()
+void TaskCardItemList::fetchDataFromDB()
 {
-	this->setQuery("select * from tomatodo");
+	// https://en.cppreference.com/w/cpp/language/string_literal
+	const auto queryString = R"(select * from tomatodo)";
+	this->setQuery(queryString);
 }
 
-bool TaskCardItemList::deleteItem(int id)
+bool TaskCardItemList::deleteItem(const int &id)
 {
 	QSqlQuery query;
-	query.prepare("delete from tomatodo where id = ?");
+	const auto queryString = R"(delete from tomatodo where id = ?)";
+	query.prepare(queryString);
 	query.addBindValue(id);
-	bool isSuccess = query.exec();
 
-	if(isSuccess) {
-		this->updateModel();
+	if (query.exec()) {
+		this->fetchDataFromDB();
 		return true;
 	}
+
 	return false;
 }
 
-bool TaskCardItemList::addNewTask(QString name, int originTime)
+bool TaskCardItemList::addNewTask(const QString &name, const int &originTime)
 {
 	QSqlQuery query;
-	query.prepare("insert into tomatodo (name,originalTime,remainTime) values (?,?,?)");
+	const auto queryString = R"(insert into tomatodo (name,originalTime,remainTime) values (?,?,?))";
+	query.prepare(queryString);
 	query.addBindValue(name);
 	query.addBindValue(originTime);
 	query.addBindValue(originTime); // init remainTime = original
 	bool isSuccess = query.exec();
 
 	if(isSuccess) {
-		this->updateModel();
+		this->fetchDataFromDB();
 		return true;
 	}
 	return false;
 }
 
-bool TaskCardItemList::updateTimeRemain(int id,int timeRemain) {
+bool TaskCardItemList::updateTimeRemain(const int &id,const int &timeRemain) {
 	QSqlQuery query;
-    query.prepare("update tomatodo set remainTime = ? where id = ?");
+	query.prepare(R"(update tomatodo set remainTime = ? where id = ?)");
 	query.addBindValue(timeRemain);
 	query.addBindValue(id);
 	bool isSuccess = query.exec();
 
 	if(isSuccess) {
-		this->updateModel();
+		this->fetchDataFromDB();
 		return true;
 	}
 	return false;
 }
 
-bool TaskCardItemList::updateTask(int id, QString name, int timeOriginal) {
-    QSqlQuery query;
-    query.prepare("update tomatodo set name = ?, originalTime = ? where id = ?");
-    query.addBindValue(name);
-    query.addBindValue(timeOriginal);
-    query.addBindValue(id);
-    bool isSuccess = query.exec();
+bool TaskCardItemList::updateTask(const int &id,const QString &name, const int &timeOriginal) {
+	QSqlQuery query;
+	query.prepare(R"(update tomatodo set name = ?, originalTime = ? where id = ?)");
+	query.addBindValue(name);
+	query.addBindValue(timeOriginal);
+	query.addBindValue(id);
+	bool isSuccess = query.exec();
 
-    if(isSuccess) {
-        this->updateModel();
-        return true;
-    }
-    return false;
+	if(isSuccess) {
+		this->fetchDataFromDB();
+		return true;
+	}
+	return false;
 }
 
-bool TaskCardItemList::tickDoneTask(int id,bool isDone) {
+bool TaskCardItemList::tickDoneTask(const int &id,const bool &isDone) {
 	QSqlQuery query;
-	query.prepare("update tomatodo set isDone = ? where id = ?");
+	query.prepare(R"(update tomatodo set isDone = ? where id = ?)");
 	query.addBindValue(isDone ? 1 : 0); // convert to int
 	query.addBindValue(id);
 	bool isSuccess = query.exec();
+
 	if(isSuccess) {
-		this->updateModel();
+		this->fetchDataFromDB();
 		return true;
 	}
 	return false;

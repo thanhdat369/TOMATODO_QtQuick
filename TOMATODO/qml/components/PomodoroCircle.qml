@@ -2,8 +2,7 @@ import QtQuick 2.15
 import QtQuick.Layouts 1.15
 import "../style"
 
-
-Rectangle{
+Rectangle {
 	id: circleBox
 
 	implicitWidth: 250
@@ -18,46 +17,48 @@ Rectangle{
 	property int secondRemain: 20
 	property alias isRunning: timer.running
 
-	ColumnLayout{
+	ColumnLayout {
 		anchors.centerIn: circleBox
 
 		Rectangle {
-			id: recoftimeline
+			id: timeline
 
 			Layout.alignment: Qt.AlignCenter
 
-			width: 106
-			height: 42
+			implicitWidth: 106
+			implicitHeight: 42
 
 			color: "transparent"
+
 			Text {
-				id: timeline
 				font.family: "Inter"
 				font.pixelSize: 35
 				font.bold: true
 
 				color: ColorStyle.mainColor
 
-				text: internal.showString(circleBox.secondRemain)
+				text: _.showString(circleBox.secondRemain)
 			}
 		}
 
-		IconButton{
+		IconButton {
 			id: playbutton
 
 			Layout.alignment: Qt.AlignCenter
 
-			iconSrc: internal.iconScr
+			iconSrc: _.iconScr
 
 			color: ColorStyle.mainColor
 
 			onClicked: {
-				if(circleBox.secondRemain > 0) {
-					if (timer.running) {
-						timer.stop();
-					} else {
-						timer.start();
-					}
+				if (circleBox.secondRemain <= 0) {
+					return;
+				}
+
+				if (timer.running) {
+					timer.stop();
+				} else {
+					timer.start();
 				}
 			}
 		}
@@ -70,6 +71,7 @@ Rectangle{
 
 			onTriggered: {
 				circleBox.secondRemain -= 1
+
 				if(secondRemain <= 0) {
 					timer.stop()
 				}
@@ -78,7 +80,7 @@ Rectangle{
 	}
 
 	QtObject {
-		id: internal
+		id: _
 
 		property bool isPlaying: timer.running
 

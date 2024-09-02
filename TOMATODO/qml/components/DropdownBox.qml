@@ -1,6 +1,5 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.0
-import QtGraphicalEffects 1.0
 import "../style"
 
 ComboBox {
@@ -92,7 +91,7 @@ ComboBox {
 	}
 
 	QtObject {
-		id: internal
+		id: _
 
 		property color backgroundColor: ColorStyle.backgroundColor
 		property color borderColor: ColorStyle.backgroundColor

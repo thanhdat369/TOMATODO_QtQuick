@@ -2,22 +2,29 @@
 #include <QFile>
 #include <QGuiApplication>
 
-namespace L {
+namespace LOGGING {
 
 Q_LOGGING_CATEGORY(database, "tomatodo.database")
 
 }
+namespace {
+QString dbName("tomatodoDB.db");
+}
 
 bool utils::createDatabase(const QGuiApplication &app) {
-	//	Database is a normal file. Check if file *.db is existed or not.
-	QFile databaseFile(app.applicationDirPath() + "/tomatodoDB.db");
-	qCWarning(L::database) << "Database existed status : " << databaseFile.exists();
+	// TODO use the join path function
+	const QString dbPath(app.applicationDirPath()+"/" + dbName);
+	QFile databaseFile(dbPath);
+
+	if (databaseFile.exists()) {
+		qCWarning(LOGGING::database) << "WARNNING Database existed: " << dbName;
+	}
 
 	QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-	db.setDatabaseName(app.applicationDirPath() + "/tomatodoDB.db");
+	db.setDatabaseName(dbPath);
 
 	if (!db.open()) {
-		qCCritical(L::database) << "Error: Unable to open the database";
+		qCCritical(LOGGING::database) << "Error: Unable to open the database";
 		return false;
 	}
 
@@ -32,11 +39,12 @@ bool utils::createDatabase(const QGuiApplication &app) {
 	    "remainTime INTEGER, "
 	    "isDone INTEGER)"
 	);
+
 	if (!query.exec()) {
-		qCCritical(L::database) << "Error: Unable to create table";
+		qFatal("ERROR: CANNOT CREATE TABLE");
 		return false;
 	}
 
-	qCInfo(L::database) << "Database and table created successfully";
+	qCInfo(LOGGING::database) << "INFO: Database and table created successfully";
 	return true; // Database already exists
 }

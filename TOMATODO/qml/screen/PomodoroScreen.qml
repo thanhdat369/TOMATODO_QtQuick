@@ -29,11 +29,11 @@ Rectangle {
 
 			hasBackButton: !root.isRunning
 
-			onBackClick: {
+			onBackClicked: {
 				root.backClick();
 			}
 
-			onSettingClick: {
+			onSettingClicked: {
 				root.settingClick();
 			}
 		}

@@ -1,6 +1,4 @@
 import QtQuick 2.15
-import QtGraphicalEffects 1.15
-
 import '../style'
 
 Rectangle {
@@ -28,13 +26,14 @@ Rectangle {
 		source: "qrc:assets/icon/tick.svg"
 	}
 
-	ColorOverlay {
-		anchors.fill: iconTicked
-		visible: iconTicked.visible
-		source:iconTicked
-		antialiasing: true
-		color: ColorStyle.backgroundColor
-	}
+    // TODO try to remove
+    // ColorOverlay {
+    // 	anchors.fill: iconTicked
+    // 	visible: iconTicked.visible
+    // 	source:iconTicked
+    // 	antialiasing: true
+    // 	color: ColorStyle.backgroundColor
+    // }
 
 	MouseArea {
 		id: mouseArea

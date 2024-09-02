@@ -23,5 +23,6 @@
         <file>qml/components/DropdownBox.qml</file>
         <file>qml/components/TomatodoCalendar.qml</file>
         <file>qml/components/TomatodoSystemTrayIcon.qml</file>
+        <file>qml/components/CalendarCustom.qml</file>
     </qresource>
 </RCC>

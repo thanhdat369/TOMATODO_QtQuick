@@ -6,7 +6,7 @@ Rectangle {
 	id:root
 
 	color: "transparent"
-	ColumnLayout{
+	ColumnLayout {
 		id: lastelement
 		anchors.centerIn: parent
 
@@ -18,7 +18,7 @@ Rectangle {
 			width: 25
 			height: 25
 
-			radius: width*0.5
+			radius: width *0.5
 
 			color: ColorStyle.mainColor
 		}

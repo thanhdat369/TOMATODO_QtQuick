@@ -1,6 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Layouts 1.15
 import "../style"
+
 Item {
 	id: root
 
@@ -11,8 +12,15 @@ Item {
 
 	property color backgroundColor: ColorStyle.mainColor
 	property color textColor: ColorStyle.lightColor
+
 	Rectangle {
 		id: overlayRec
+		// This rectange placed on top of the esclip main rectangle
+		// to make the bullet like this
+		//     -------
+		//    | 20 min )
+		//     -------
+
 		width: mainRectangle.radius
 		height: mainRectangle.height
 		color: mainRectangle.color
@@ -39,12 +47,12 @@ Item {
 
 			color: root.textColor
 
-			text: internal.convertToMin(root.deadlineTime, root.workedTime)
+			text: _.convertToMin(root.deadlineTime, root.workedTime)
 		}
 	}
 
 	QtObject {
-		id: internal
+		id: _
 
 		function convertToMin(originalTimeSec, workedTimeSec) {
 			let originalTimeMin = Math.ceil(originalTimeSec / 60);

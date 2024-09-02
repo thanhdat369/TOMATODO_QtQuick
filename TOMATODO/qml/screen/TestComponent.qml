@@ -3,7 +3,7 @@ import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
 import "../components"
 
-
+// Please do not remove it, this component for debug and testing only
 ScrollView {
 	id: scrollView
 	anchors.fill: parent
@@ -14,7 +14,7 @@ ScrollView {
 	width: Math.max(implicitWidth, scrollview.availableWidth)
 	Repeater {
 		model:100
-		delegate: TaskCard{}
+		delegate: TaskCard {}
 	}
 	}
 }

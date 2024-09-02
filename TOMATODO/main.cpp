@@ -8,30 +8,32 @@
 int main(int argc, char *argv[])
 {
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+	QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #endif
-    QGuiApplication app(argc, argv);
+	QGuiApplication app(argc, argv);
 
-    QTranslator qTrans;
-    qTrans.load("english.qm",app.applicationDirPath());
-    app.installTranslator(&qTrans);
+    // TODO Add language
+    // QTranslator qTrans;
+    // qTrans.load("vietnamese.qm",app.applicationDirPath());
+    // app.installTranslator(&qTrans);
 
-    QQmlApplicationEngine engine;
+	QQmlApplicationEngine engine;
+
 
 	//TODO: Create a WARNING popup for this case
 	utils::createDatabase(app); //This function returns BOOL value
 
 	TaskCardItemList *taskCardItemList = new TaskCardItemList();
 
-	engine.rootContext()->setContextProperty("myModel", taskCardItemList);
+	engine.rootContext()->setContextProperty("dataModel", taskCardItemList);
 
 	const QUrl url(QStringLiteral("qrc:/main.qml"));
-    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
-                     &app, [url](QObject *obj, const QUrl &objUrl) {
-        if (!obj && url == objUrl)
-            QCoreApplication::exit(-1);
-    }, Qt::QueuedConnection);
-    engine.load(url);
+	QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
+	                 &app, [url](QObject *obj, const QUrl &objUrl) {
+		if (!obj && url == objUrl)
+			QCoreApplication::exit(-1);
+	}, Qt::QueuedConnection);
+	engine.load(url);
 
-    return app.exec();
+	return app.exec();
 }

@@ -10,18 +10,18 @@ ColumnLayout {
 	property bool hasBackButton: true
 	property bool hasAppTitle: true
 
-	signal backClick()
-	signal settingClick()
+	signal backClicked()
+	signal settingClicked()
 
-	spacing: internal.topMargin
+	spacing: _.topMargin
 
 	Item {
 		id: buttonLayout
 
 		Layout.fillWidth: true
-		Layout.topMargin: internal.topMargin
-		Layout.leftMargin: internal.sideMargin
-		Layout.rightMargin: internal.sideMargin
+		Layout.topMargin: _.topMargin
+		Layout.leftMargin: _.sideMargin
+		Layout.rightMargin: _.sideMargin
 
 		IconButton {
 			id: backButton
@@ -29,13 +29,13 @@ ColumnLayout {
 			visible: root.hasBackButton
 
 			anchors.left: parent.left
-			implicitWidth: internal.iconWidth
-			implicitHeight: internal.iconHeight
+			implicitWidth: _.iconWidth
+			implicitHeight: _.iconHeight
 
 			iconSrc: "qrc:assets/icon/arrow-back.svg"
 
 			onClicked: {
-				root.backClick();
+				root.backClicked();
 			}
 		}
 
@@ -45,13 +45,13 @@ ColumnLayout {
 			visible: root.hasSettingButton
 
 			anchors.right: parent.right
-			implicitWidth: internal.iconWidth
-			implicitHeight: internal.iconHeight
+			implicitWidth: _.iconWidth
+			implicitHeight: _.iconHeight
 
 			iconSrc: "qrc:assets/icon/settings.svg"
 
 			onClicked: {
-				root.settingClick();
+				root.settingClicked();
 			}
 		}
 	}
@@ -65,7 +65,7 @@ ColumnLayout {
 	}
 
 	QtObject {
-		id: internal
+		id: _
 
 		readonly property int iconHeight: 30
 		readonly property int iconWidth: 30

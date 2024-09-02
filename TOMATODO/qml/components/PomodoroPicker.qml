@@ -25,8 +25,12 @@ Popup {
 		return min * 60 + sec;
 	}
 
+	Component.onCompleted: {
+		taskLabel.forceActiveFocus();
+	}
+
 	implicitWidth: 400
-	implicitHeight: 250
+	implicitHeight: 300
 	modal: true
 
 	background: null
@@ -53,7 +57,7 @@ Popup {
 
 			color: ColorStyle.mainColor
 
-			text: internal.title
+			text: _.title
 		}
 
 		ColumnLayout {
@@ -61,16 +65,19 @@ Popup {
 			spacing: 20
 
 			RowLayout {
+				// TODO: separate to new component
 				Layout.alignment: Qt.AlignCenter
 				spacing: 10
 
-				NumberRoundedBox{
+				NumberRoundedBox {
 					id: firstMinField
+					nextFocusObject: secondMinField
 					text: "3"
 				}
 
-				NumberRoundedBox{
+				NumberRoundedBox {
 					id: secondMinField
+					nextFocusObject: firstSecField
 				}
 
 				Rectangle {
@@ -86,24 +93,38 @@ Popup {
 					}
 				}
 
-				NumberRoundedBox{
+				NumberRoundedBox {
 					id: firstSecField
+					nextFocusObject: secondSecField
 				}
 
-				NumberRoundedBox{
+				NumberRoundedBox {
 					id: secondSecField
 				}
 			}
 
-			TextEdit {
-				id: taskLabel
+			Rectangle {
+
+				implicitHeight: 36
+				implicitWidth: 300
+				clip: true
+
+				border.color: ColorStyle.mainColor
+				color: "transparent"
+				radius: 20
+
 				Layout.alignment: Qt.AlignCenter
 
-				font.family: FontStyle.ubuntuMonoBold.name
-				font.pixelSize: 24
-				color: ColorStyle.mainColor
+				TextEdit {
+					id: taskLabel
+					anchors.centerIn: parent
 
-				text: "Test"
+					font.family: FontStyle.ubuntuMonoBold.name
+					font.pixelSize: 24
+					color: ColorStyle.mainColor
+
+					text: "Test"
+				}
 			}
 		}
 
@@ -121,7 +142,8 @@ Popup {
 
 			RoundedButton {
 				id: okButton
-				text: "OK"
+
+				text: qsTr("OK")
 				onClicked: {
 					root.okButtonClicked();
 				}
@@ -130,7 +152,8 @@ Popup {
 			RoundedButton {
 				id: cancelButton
 				style: RoundedButton.ButtonStyle.CancelButton
-				text: "Cancel"
+
+				text: qsTr("Cancel")
 
 				onClicked: {
 					root.close();
@@ -140,7 +163,7 @@ Popup {
 	}
 
 	QtObject {
-		id: internal
+		id: _
 
 		property string title: {
 			if (root.taskMode === PomodoroPicker.TaskMode.Edit) {

@@ -20,7 +20,7 @@ Rectangle {
 	implicitHeight: 50
 
 	border.width: 1
-	border.color: internal.cardColor
+	border.color: _.cardColor
 
 	radius: 20
 
@@ -40,7 +40,7 @@ Rectangle {
 			Layout.alignment: Qt.AlignCenter
 			Layout.leftMargin: 20
 
-			color: internal.cardColor
+			color: _.cardColor
 
 			onClicked: {
 				root.isDone = !root.isDone
@@ -58,7 +58,7 @@ Rectangle {
 			font.family: FontStyle.ubuntuMonoRegular.name
 			font.pixelSize: 14
 
-			color: internal.cardColor
+			color: _.cardColor
 
 			text: root.taskName
 		}
@@ -81,7 +81,7 @@ Rectangle {
 		implicitHeight: root.height
 		width: 70
 
-		backgroundColor: internal.cardColor
+		backgroundColor: _.cardColor
 
 		deadlineTime: root.originalTime
 		workedTime: root.originalTime - root.remainTime
@@ -147,7 +147,7 @@ Rectangle {
 	}
 
 	QtObject {
-		id: internal
+		id: _
 
 		property color cardColor: {
 			if(mouseArea.containsMouse){

@@ -28,9 +28,9 @@ Item {
 
 			hasBackButton: false
 
-			onSettingClick: {
-				settingLoader.active = true;
-			}
+            // onSettingClick: {
+            // 	settingLoader.active = true;
+            // }
 		}
 
 		DatePicker {
@@ -168,9 +168,9 @@ Item {
 
 				anchors.fill: parent
 
-				onBackClick: {
-					settingLoader.active = false
-				}
+                // onBackClick: {
+                // 	settingLoader.active = false
+                // }
 			}
 		}
 	}
