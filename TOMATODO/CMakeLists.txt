@@ -11,8 +11,8 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core Quick)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS LinguistTools Core Quick Sql)
+find_package(QT NAMES Qt6 REQUIRED COMPONENTS Core Quick)
+find_package(Qt6 REQUIRED COMPONENTS LinguistTools Core Quick Sql Core5Compat)
 
 # TODO change the I18N TO QT6
 # SET(TS_FILES
@@ -27,9 +27,6 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS LinguistTools Core Quick 
 set(PROJECT_SOURCES
         taskcarditemlist.h
         taskcarditemlist.cpp
-
-        tomatodotaskitem.h
-        tomatodotaskitem.cpp
 
         TomatodoUtils.h
         TomatodoUtils.cpp
@@ -71,7 +68,8 @@ else()
 endif()
 #qrc:/assets/icon/tomato.ico//
 target_link_libraries(TOMATODO
-  PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick Qt6::Sql)
+  PRIVATE Qt6::Core Qt6::Quick Qt6::Sql Qt6::Core5Compat)
+
 
 set_target_properties(TOMATODO PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com

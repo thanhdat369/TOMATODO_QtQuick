@@ -11,7 +11,7 @@ class TaskCardItemList : public QSqlQueryModel
 
 public:
 	enum Roles {
-		IdRole = Qt::UserRole + 1,      // id
+		IdRole = Qt::UserRole + 1, // id
 		NameRole,
 		StartedDateRole,
 		OriginalTimeRole,
@@ -25,13 +25,14 @@ public:
 
 private:
 public slots:
-	void updateModel();
-	bool deleteItem(int id);
-	bool addNewTask(QString name, int originTime);
-    bool updateTimeRemain(int id,int timeRemain);
-    bool updateTask(int id, QString name, int timeOriginal);
-    bool tickDoneTask(int id,bool isDone);
-//	int getId();
+	void fetchDataFromDB();
+
+	bool addNewTask(const QString &name, const int &originTime);
+	bool updateTimeRemain(const int &id, const int &timeRemain);
+	bool updateTask(const int &id, const QString &name, const int &timeOriginal);
+	bool tickDoneTask(const int &id,const bool &isDone);
+
+	bool deleteItem(const int &id);
 };
 
 #endif // TASKCARDITEMLIST_H

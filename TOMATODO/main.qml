@@ -9,6 +9,7 @@ import "qml/screen"
 
 ApplicationWindow {
 	id: main_window
+
 	width: 500
 	height: 500
 
@@ -18,22 +19,22 @@ ApplicationWindow {
 	maximumWidth: 800
 	maximumHeight: 500
 
+	visible: true // need it because the tray system
 
-	visible: true
-	title: qsTr("TOMATODO App")
+	title: qsTr("TOMATODO")
 
 	color: ColorStyle.backgroundColor
 
-    onClosing: {
-        main_window.hide();
-    }
+	onClosing: {
+		main_window.hide();
+	}
 
 	HomeScreen {
 		anchors.fill: parent
-		tomatodoModel: myModel
-    }
+		tomatodoModel: dataModel
+	}
 
-    TomatodoSystemTrayIcon {
-        id: tomatodoSysTrayIcon
-    }
+	TomatodoSystemTrayIcon {
+		id: tomatodoSysTrayIcon
+	}
 }

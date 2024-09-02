@@ -24,7 +24,7 @@ Item {
 		radius: 20
 
 		border.width: 2
-		border.color: internal.borderButtonColor
+		border.color: _.borderButtonColor
 
 		color: "transparent"
 
@@ -34,7 +34,7 @@ Item {
 			font.family: FontStyle.ubuntuMonoBold.name
 			font.pixelSize: 20
 			anchors.centerIn: parent
-			color: ColorStyle.lightColor
+			color: _.buttonColor
 
 			text: root.text
 		}
@@ -51,23 +51,27 @@ Item {
 	}
 
 	QtObject {
-		id: internal
+		id: _
 		property color buttonColor: {
 			if (root.style === RoundedButton.ButtonStyle.AcceptButton) {
-				return ColorStyle.lightColor;
+				return ColorStyle.mainColor;
 			} else if(root.style === RoundedButton.ButtonStyle.CancelButton) {
-				return ColorStyle.darkColor;
+				return ColorStyle.textColor;
 			}
 			return ColorStyle.mainColor01
 		}
 
 		property color borderButtonColor: {
+			if (mouseArea.containsMouse) {
+				return ColorStyle.mainHoverColor;
+			}
+
 			if (root.style === RoundedButton.ButtonStyle.AcceptButton) {
 				return ColorStyle.mainColor;
 			} else if(root.style === RoundedButton.ButtonStyle.CancelButton) {
-				return ColorStyle.lightColor;
+				return ColorStyle.textColor;
 			}
-			return ColorStyle.mainColor01
+			return ColorStyle.mainColor;
 		}
 
 	}
