@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>qml/components/CalendarCustom.qml</file>
+        <file>qml/components/CalendarDayCustom.qml</file>
         <file>qml/components/DatePicker.qml</file>
         <file>qml/components/DeadlineBox.qml</file>
         <file>qml/components/DropdownBox.qml</file>
