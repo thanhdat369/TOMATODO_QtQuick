@@ -11,6 +11,14 @@ Popup {
 	implicitWidth: 300
 	modal: true
 
+	CalendarCustom {
+		id: calendar
+		anchors.fill: parent
+		width: root.width
+		height: root.height
+
+	}
+
     // property alias selectedDate: calendar.selectedDate
 
     // TODO fix calendar in qt6
@@ -19,8 +27,6 @@ Popup {
 
     // 	anchors.centerIn: parent
 
-    // 	width: root.width
-    // 	height: root.height
 
     // 	style: CalendarStyle {
     // 		gridVisible: false
