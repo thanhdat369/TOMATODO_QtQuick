@@ -28,9 +28,9 @@ Item {
 
 			hasBackButton: false
 
-            onSettingClicked: {
-                settingLoader.active = true;
-            }
+			onSettingClicked: {
+				settingLoader.active = true;
+			}
 		}
 
 		DatePicker {
@@ -41,7 +41,7 @@ Item {
 	}
 
 	IconButton {
-        // Add task button
+		// Add task button
 		id: iconPlus
 		anchors.top: colummBig.bottom
 		anchors.right: listItem.right
@@ -78,11 +78,11 @@ Item {
 	ListView {
 		id: listItem
 
-        anchors{
-            top: iconPlus.bottom
-            topMargin: 15
-            horizontalCenter: root.horizontalCenter
-        }
+		anchors{
+			top: iconPlus.bottom
+			topMargin: 15
+			horizontalCenter: root.horizontalCenter
+		}
 
 		width: 435
 		height: root.height - colummBig.height
@@ -106,11 +106,11 @@ Item {
 			isDone: model.isDone
 
 			onRemoveTask: {
-                if(!model) {
-                    return;
-                }
+				if(!model) {
+					return;
+				}
 
-                tomatodoModel.deleteItem(model.id);
+				tomatodoModel.deleteItem(model.id);
 			}
 
 			onItemClick: {
@@ -119,11 +119,11 @@ Item {
 			}
 
 			onDoneClick: {
-                if(!model) {
-                    return;
-                }
+				if(!model) {
+					return;
+				}
 
-                tomatodoModel.tickDoneTask(model.id, taskCard.isDone);
+				tomatodoModel.tickDoneTask(model.id, taskCard.isDone);
 			}
 
 			onDoubleClicked: {
@@ -150,7 +150,7 @@ Item {
 				anchors.fill: parent
 				taskModel: internal.currentModel ? internal.currentModel : null
 
-                onBackClick: {
+				onBackClick: {
 					root.tomatodoModel.updateTimeRemain(internal.currentModel.id, pomodoroScreen.timeRemain);
 					poromodoLoader.active = false;
 				}
@@ -176,9 +176,9 @@ Item {
 
 				anchors.fill: parent
 
-                onBackClicked: {
-                    settingLoader.active = false
-                }
+				onBackClicked: {
+					settingLoader.active = false
+				}
 			}
 		}
 	}
