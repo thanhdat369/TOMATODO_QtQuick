@@ -1,4 +1,5 @@
-import QtQuick 2.15
+import QtQuick
+import Qt5Compat.GraphicalEffects
 import '../style'
 
 Rectangle {
@@ -16,7 +17,7 @@ Rectangle {
 	Image {
 		id: iconTicked
 
-		visible: isDone
+		visible: root.isDone
 
 		width: root.width
 		height: root.height
@@ -26,14 +27,13 @@ Rectangle {
 		source: "qrc:assets/icon/tick.svg"
 	}
 
-    // TODO try to remove
-    // ColorOverlay {
-    // 	anchors.fill: iconTicked
-    // 	visible: iconTicked.visible
-    // 	source:iconTicked
-    // 	antialiasing: true
-    // 	color: ColorStyle.backgroundColor
-    // }
+	ColorOverlay {
+		anchors.fill: iconTicked
+		visible: iconTicked.visible
+		source: iconTicked
+		antialiasing: true
+		color: ColorStyle.backgroundColor
+	}
 
 	MouseArea {
 		id: mouseArea
