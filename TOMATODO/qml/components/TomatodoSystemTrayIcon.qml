@@ -1,5 +1,5 @@
-import QtQuick 2.15
-import Qt.labs.platform 1.1
+import QtQuick
+import Qt.labs.platform
 
 SystemTrayIcon {
 	id: sysTray
@@ -7,7 +7,7 @@ SystemTrayIcon {
 	visible: true
 	icon.source: "qrc:/assets/icon/tomato.ico"
 
-	tooltip: "TOMATODO APP RUNNING"
+	tooltip: qsTr("TOMATODO APP RUNNING")
 
 	onActivated: {
 		main_window.show();
