@@ -1,11 +1,12 @@
-import QtQuick 2.15
-import QtQuick.Layouts 1.15
+import QtQuick
+import QtQuick.Layouts
 import "../style"
 
 Rectangle {
 	id:root
 
 	color: "transparent"
+
 	ColumnLayout {
 		id: lastelement
 		anchors.centerIn: parent
