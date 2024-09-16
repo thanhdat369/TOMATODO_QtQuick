@@ -1,6 +1,6 @@
 pragma Singleton
 
-import QtQuick 2.15
+import QtQuick
 
 QtObject {
 	readonly property FontLoader ubuntuMonoBold: FontLoader { source: "qrc:/assets/fonts/Ubuntu_Mono/UbuntuMono-Bold.ttf" }

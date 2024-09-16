@@ -1,9 +1,9 @@
-﻿import QtQuick 2.15
-import QtQuick.Layouts 1.15
-import QtQuick.Controls 2.15
+﻿import QtQuick
+import QtQuick.Layouts
+import QtQuick.Controls
+
 import "layout"
 import "../components"
-import "../style"
 
 Item {
 	id: root
@@ -87,7 +87,7 @@ Item {
 		width: 435
 		height: root.height - colummBig.height
 
-		model: tomatodoModel
+		model: root.tomatodoModel
 
 		orientation: ListView.Vertical
 
@@ -105,12 +105,14 @@ Item {
 			remainTime: parseInt(model.timeRemain)
 			isDone: model.isDone
 
+			required property var model
+
 			onRemoveTask: {
-				if(!model) {
+				if (!model) {
 					return;
 				}
 
-				tomatodoModel.deleteItem(model.id);
+				root.tomatodoModel.deleteItem(model.id);
 			}
 
 			onItemClick: {
@@ -119,11 +121,11 @@ Item {
 			}
 
 			onDoneClick: {
-				if(!model) {
+				if (!model) {
 					return;
 				}
 
-				tomatodoModel.tickDoneTask(model.id, taskCard.isDone);
+				root.tomatodoModel.tickDoneTask(model.id, taskCard.isDone);
 			}
 
 			onDoubleClicked: {

@@ -1,6 +1,6 @@
-import QtQuick 2.15
-import QtQuick.Controls 2.15
-import QtQuick.Layouts 1.15
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
 
 import "layout"
 import "../components"
@@ -58,7 +58,7 @@ Rectangle {
 
 				DropdownBox {
 					id: languageDropdown
-					model: ["English","Vietnamese"]
+					model: [qsTr("English"), qsTr("Vietnamese")]
 					height: 100
 					width: 250
 				}
@@ -82,6 +82,7 @@ Rectangle {
 						text: qsTr("Switch")
 					}
 				}
+				// TODO Separate this Switch
 				Switch {
 					id: switchTheme
 					checked: ColorStyle.isDark

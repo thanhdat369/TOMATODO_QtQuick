@@ -1,5 +1,6 @@
-import QtQuick 2.15
-import QtQuick.Layouts 1.15
+import QtQuick
+import QtQuick.Layouts
+
 import "layout"
 import "../components"
 import "../style"
@@ -60,7 +61,7 @@ Rectangle {
 				color: ColorStyle.mainColor
 				font.family: FontStyle.ubuntuMonoBold.name
 
-				text:root.taskModel ? root.taskModel.name : "No name"
+				text: root.taskModel ? root.taskModel.name : "No name"
 			}
 		}
 	}
