@@ -1,21 +1,34 @@
+//CalendarDayCustom.qml
 import QtQuick
 import QtQuick.Controls
 import "../style"
 
-//TODO
 Rectangle {
 	id: root
 
-	color: "black"
+	color: "transparent"
 	signal dayClicked();
 
 	property bool isSelected: false
 	property bool isToday: false
+	property int dayNum: 1
 
 	implicitHeight: 30
 	implicitWidth: 30
 
 	radius: 30
+
+	border.color: _.borderColor
+
+	Text {
+		id: dayNum
+		anchors.fill: parent
+		verticalAlignment: Text.AlignVCenter
+		horizontalAlignment: Text.AlignHCenter
+
+		color: ColorStyle.lightColor
+		text: root.dayNum.toString()
+	}
 
 	MouseArea {
 		id: _hover

@@ -9,11 +9,15 @@ Rectangle {
 	anchors.fill: parent
 	width: parent.width
 	border {
-		width: 2
-		color: ColorStyle.lightColor
+		width: 1
+		color: ColorStyle.darkColor
 	}
 	radius: 10
-	color: "transparent"
+	color: ColorStyle.backgroundColor
+
+	property int day: 1
+	property int month: 1
+	property int year: 2000
 
 	ColumnLayout {
 		anchors.fill: parent
@@ -34,17 +38,31 @@ Rectangle {
 
 			Layout.fillWidth: true
 			Layout.fillHeight: true
-			// TODO Fix hard code
-			month: 9
-			year: 2024
+			month: root.month
+			year: root.year
 			locale: Qt.locale("en_US")
-			delegate: Text {
-				horizontalAlignment: Text.AlignHCenter
-				verticalAlignment: Text.AlignVCenter
+			delegate: CalendarDayCustom{
 				opacity: model.month === allDayOfMonth.month ? 1 : 0
-				text: model.day
-				// TODO isToday => month.day == ?
+				dayNum: model.day
+				isToday: _.isToday(model.day, model.month, model.year);
 			}
+
+		}
+	}
+
+
+	QtObject {
+		id: _
+
+		function isToday(_day, _month, _year) {
+			let toDay = new Date();
+			let toDateDay = toDay.getDate();
+			let toDateMonth = toDay.getMonth();
+			let toDateYear = toDay.getFullYear();
+
+			return _day === toDateDay &&
+					_month === toDateMonth &&
+					_year === toDateYear
 		}
 	}
 
