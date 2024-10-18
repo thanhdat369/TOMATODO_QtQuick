@@ -61,13 +61,10 @@ bool TaskCardItemList::addNewTask(const QString &name, const int &originTime)
 	query.addBindValue(originTime); // init remainTime = original
 	bool isSuccess = query.exec();
 
-	qDebug() << "Debug create";
-	if(isSuccess) {
-		qDebug() << "Debug create success";
+    if(isSuccess) {
 		this->fetchDataFromDB();
 		return true;
 	}
-	qDebug() << "Debug create failed";
 	return false;
 }
 
