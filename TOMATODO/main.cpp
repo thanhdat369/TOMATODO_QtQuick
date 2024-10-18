@@ -13,11 +13,14 @@ int main(int argc, char *argv[])
 	QGuiApplication app(argc, argv);
 
 	// TODO Add language
-    // QTranslator qTrans;
-    // qTrans.load("vietnamese.qm",app.applicationDirPath());
-    // app.installTranslator(&qTrans);
+	QTranslator qTrans;
 
 	QQmlApplicationEngine engine;
+	QString u(":/translations/trans_vn.qm");
+	bool load_ss = qTrans.load(u);
+	qDebug() << "OUTPUT FILES" << load_ss;
+	engine.retranslate();
+	app.installTranslator(&qTrans);
 
 	//TODO: Create a WARNING popup for this case
 	QSqlDatabase db = QSqlDatabase::addDatabase(utils::getDatabseType());
@@ -32,7 +35,6 @@ int main(int argc, char *argv[])
 		return EXIT_FAILURE;
 	}
 
-	// Init the model here
 	TaskCardItemList *taskCardItemList = new TaskCardItemList();
 	engine.rootContext()->setContextProperty("dataModel", taskCardItemList);
 

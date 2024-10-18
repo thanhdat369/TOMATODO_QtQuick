@@ -12,17 +12,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 REQUIRED COMPONENTS Core Quick)
-find_package(Qt6 REQUIRED COMPONENTS LinguistTools Core Quick Sql Core5Compat)
-
-# TODO change the I18N TO QT6
-# SET(TS_FILES
-#         ${PROJECT_SOURCE_DIR}/translations/english.ts
-#         ${PROJECT_SOURCE_DIR}/translations/vietnamese.ts
-# )
-
-# qt5_create_translation(QM_FILES
-#     ${PROJECT_SOURCE_DIR}
-#     ${TS_FILES})
+find_package(Qt6 REQUIRED COMPONENTS LinguistTools Core Quick Sql Core5Compat LinguistTools)
 
 set(PROJECT_SOURCES
         taskcarditemlist.h
@@ -79,6 +69,18 @@ set_target_properties(TOMATODO PROPERTIES
     MACOSX_BUNDLE TRUE
     WIN32_EXECUTABLE TRUE
 )
+
+qt_standard_project_setup(REQUIRES 6.5)
+qt_standard_project_setup(I18N_TRANSLATED_LANGUAGES en vn)
+
+qt_add_translations(TOMATODO
+    SOURCES qml.qrc
+    TS_FILE_DIR translations
+    TS_FILE_BASE trans
+    LRELEASE_OPTIONS -idbased
+    RESOURCE_PREFIX "translations"
+)
+add_dependencies(${PROJECT_NAME} ${PROJECT_NAME}_lupdate)
 
 if(QT_VERSION_MAJOR EQUAL 6)
     qt_import_qml_plugins(TOMATODO)
