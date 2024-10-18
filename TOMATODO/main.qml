@@ -18,7 +18,7 @@ ApplicationWindow {
 
 	visible: true // need it because the tray system
 
-	title: qsTr("TOMATODO")
+	title: qsTrId("isfdfdOMATODO App")
 
 	color: ColorStyle.backgroundColor
 

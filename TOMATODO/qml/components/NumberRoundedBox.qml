@@ -43,7 +43,7 @@ Rectangle {
 			// only accept number < 10
 			if(numberLabel.text.length > 1)
 			{
-				if(numberLabel.cursorPosition == 1) {
+				if(numberLabel.cursorPosition === 1) {
 					numberLabel.remove(1,2);
 				}
 				else {
