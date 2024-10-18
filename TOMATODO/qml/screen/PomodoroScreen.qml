@@ -29,6 +29,8 @@ Rectangle {
 			Layout.fillWidth: true
 
 			hasBackButton: !root.isRunning
+			hasAppTitle: true
+			hasSettingButton: true
 
 			onBackClicked: {
 				root.backClick();

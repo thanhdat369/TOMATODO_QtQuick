@@ -28,7 +28,7 @@ ApplicationWindow {
 
 	HomeScreen {
 		anchors.fill: parent
-		tomatodoModel: dataModel
+		tomatodoModel: dataModel // TaskCardItemList.h
 	}
 
 	TomatodoSystemTrayIcon {

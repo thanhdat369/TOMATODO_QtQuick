@@ -28,8 +28,8 @@ set(PROJECT_SOURCES
         taskcarditemlist.h
         taskcarditemlist.cpp
 
-        TomatodoUtils.h
-        TomatodoUtils.cpp
+        DatabaseTomatodoUtils.h
+        DatabaseTomatodoUtils.cpp
 
         main.cpp
         qml.qrc

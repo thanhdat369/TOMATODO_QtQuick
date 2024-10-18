@@ -9,7 +9,8 @@ TaskCardItemList::TaskCardItemList(QObject *parent)
 
 QVariant TaskCardItemList::data(const QModelIndex &index, int role) const
 {
-	int columnId = role - Qt::UserRole - 1;
+	int columnId = role - (Qt::UserRole + 1);
+
 	//Create the index using a column ID
 	QModelIndex modelIndex = this->index(index.row(), columnId);
 
@@ -19,19 +20,19 @@ QVariant TaskCardItemList::data(const QModelIndex &index, int role) const
 QHash<int, QByteArray> TaskCardItemList::roleNames() const
 {
 	QHash<int, QByteArray> roles;
-	    roles[IdRole] = "id";
-		roles[NameRole] = "name";
-		roles[StartedDateRole] = "startedDate";
-		roles[OriginalTimeRole] = "originalTime";
-		roles[RemainTimeRole] = "timeRemain";
-		roles[DoneRole] = "isDone";
-		return roles;
+	roles[IdRole] = "id";
+	roles[NameRole] = "name";
+	roles[StartedDateRole] = "startedDate";
+	roles[OriginalTimeRole] = "originalTime";
+	roles[RemainTimeRole] = "timeRemain";
+	roles[DoneRole] = "isDone";
+	return roles;
 }
 
 void TaskCardItemList::fetchDataFromDB()
 {
 	// https://en.cppreference.com/w/cpp/language/string_literal
-	const auto queryString = R"(select * from tomatodo)";
+	const auto queryString = R"(select id,name,startedDate,originalTime,timeRemain,isDone from tomatodo)";
 	this->setQuery(queryString);
 }
 
@@ -53,17 +54,20 @@ bool TaskCardItemList::deleteItem(const int &id)
 bool TaskCardItemList::addNewTask(const QString &name, const int &originTime)
 {
 	QSqlQuery query;
-	const auto queryString = R"(insert into tomatodo (name,originalTime,remainTime) values (?,?,?))";
+	const auto queryString = R"(insert into tomatodo (name,originalTime,timeRemain) values (?,?,?))";
 	query.prepare(queryString);
 	query.addBindValue(name);
 	query.addBindValue(originTime);
 	query.addBindValue(originTime); // init remainTime = original
 	bool isSuccess = query.exec();
 
+	qDebug() << "Debug create";
 	if(isSuccess) {
+		qDebug() << "Debug create success";
 		this->fetchDataFromDB();
 		return true;
 	}
+	qDebug() << "Debug create failed";
 	return false;
 }
 

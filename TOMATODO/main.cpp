@@ -1,5 +1,5 @@
 #include "taskcarditemlist.h"
-#include "TomatodoUtils.h"
+#include "DatabaseTomatodoUtils.h"
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
@@ -12,19 +12,28 @@ int main(int argc, char *argv[])
 #endif
 	QGuiApplication app(argc, argv);
 
-    // TODO Add language
+	// TODO Add language
     // QTranslator qTrans;
     // qTrans.load("vietnamese.qm",app.applicationDirPath());
     // app.installTranslator(&qTrans);
 
 	QQmlApplicationEngine engine;
 
-
 	//TODO: Create a WARNING popup for this case
-	utils::createDatabase(app); //This function returns BOOL value
+	QSqlDatabase db = QSqlDatabase::addDatabase(utils::getDatabseType());
+	db.setDatabaseName(utils::getDatabseName());
+	if (!db.open())
+	{
+		return EXIT_FAILURE;
+	}
 
+	bool loadDatabaseSucces = utils::processAndCreateTheDatabase();
+	if (!loadDatabaseSucces) {
+		return EXIT_FAILURE;
+	}
+
+	// Init the model here
 	TaskCardItemList *taskCardItemList = new TaskCardItemList();
-
 	engine.rootContext()->setContextProperty("dataModel", taskCardItemList);
 
 	const QUrl url(QStringLiteral("qrc:/main.qml"));

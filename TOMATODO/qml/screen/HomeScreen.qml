@@ -26,7 +26,8 @@ Item {
 
 			Layout.fillWidth: true
 
-			hasBackButton: false
+			hasAppTitle: true
+			hasSettingButton: true
 
 			onSettingClicked: {
 				settingLoader.active = true;
@@ -124,6 +125,8 @@ Item {
 				if (!model) {
 					return;
 				}
+
+				console.log("isDone", isDone);
 
 				root.tomatodoModel.tickDoneTask(model.id, taskCard.isDone);
 			}

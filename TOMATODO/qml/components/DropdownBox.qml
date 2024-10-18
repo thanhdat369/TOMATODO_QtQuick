@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Controls
+import QtQuick.Controls.Basic // To fix warning customize a non-native style
 
 import "../style"
 
@@ -67,6 +68,9 @@ ComboBox {
 		border.width: 2
 		border.color: ColorStyle.mainColor
 		radius: 20
+		implicitWidth: 100
+		implicitHeight: 40
+		opacity: enabled ? 1 : 0.3
 
 		color: "transparent"
 	}

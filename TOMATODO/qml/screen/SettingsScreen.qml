@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import QtQuick.Controls.Basic
 
 import "layout"
 import "../components"
@@ -22,7 +23,8 @@ Rectangle {
 			id: topLayout
 
 			Layout.fillWidth: true
-			hasSettingButton: false
+			hasAppTitle: true
+			hasBackButton: true
 
 			onBackClicked: {
 				root.backClicked();

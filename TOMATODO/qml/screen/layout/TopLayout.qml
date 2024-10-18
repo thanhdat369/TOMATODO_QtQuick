@@ -5,9 +5,9 @@ import '../../components'
 ColumnLayout {
 	id: root
 
-	property bool hasSettingButton: true
-	property bool hasBackButton: true
-	property bool hasAppTitle: true
+	property bool hasSettingButton: false
+	property bool hasBackButton: false
+	property bool hasAppTitle: false
 
 	signal backClicked()
 	signal settingClicked()
