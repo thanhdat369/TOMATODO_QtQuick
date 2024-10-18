@@ -8,7 +8,7 @@ Item {
 	implicitHeight: 30
 	implicitWidth: 260
 
-    // property alias selectedDate: tomatodoCalendar.selectedDate
+	property alias selectedDate: tomatodoCalendar.selectedDate
 
 	RowLayout {
 		Layout.fillWidth: true
@@ -34,8 +34,7 @@ Item {
 				font.family: FontStyle.ubuntuMonoRegular.name
 				color: _.color
 
-                // TODO FIX IT
-                // text: root.selectedDate.toDateString();
+				text: root.selectedDate.toDateString();
 
 			}
 		}
@@ -59,5 +58,10 @@ Item {
 		id: _
 
 		property color color: mouseArea.containsMouse ? ColorStyle.textColor : ColorStyle.mainColor
+
+		function getToday() {
+			let date = new Date()
+
+		}
 	}
 }
