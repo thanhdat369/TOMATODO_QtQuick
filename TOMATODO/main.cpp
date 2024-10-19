@@ -16,9 +16,8 @@ int main(int argc, char *argv[])
 	QTranslator qTrans;
 
 	QQmlApplicationEngine engine;
-	QString u(":/translations/trans_vn.qm");
-	bool load_ss = qTrans.load(u);
-	qDebug() << "OUTPUT FILES" << load_ss;
+    QString transPath(":/translations/trans_vn.qm");
+    qTrans.load(transPath);
 	engine.retranslate();
 	app.installTranslator(&qTrans);
 
