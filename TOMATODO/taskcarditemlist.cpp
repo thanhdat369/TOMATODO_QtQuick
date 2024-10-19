@@ -70,11 +70,10 @@ bool TaskCardItemList::addNewTask(const QString &name, const int &originTime)
 
 bool TaskCardItemList::updateTimeRemain(const int &id,const int &timeRemain) {
 	QSqlQuery query;
-	query.prepare(R"(update tomatodo set remainTime = ? where id = ?)");
+    query.prepare(R"(update tomatodo set timeRemain = ? where id = ?)");
 	query.addBindValue(timeRemain);
 	query.addBindValue(id);
 	bool isSuccess = query.exec();
-
 	if(isSuccess) {
 		this->fetchDataFromDB();
 		return true;
