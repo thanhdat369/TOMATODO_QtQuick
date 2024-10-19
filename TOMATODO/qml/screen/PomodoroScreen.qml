@@ -51,6 +51,7 @@ Rectangle {
 			PomodoroCircle {
 				id: poromodoCircle
 				secondRemain: root.taskModel ? root.taskModel.timeRemain : 0
+				originalTime: root.taskModel ? root.taskModel.originalTime : 1
 			}
 
 			Text {
